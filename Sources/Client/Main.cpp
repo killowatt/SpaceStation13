@@ -3,5 +3,6 @@
 
 int main()
 {
-	Game game;
+	Game game = Game();
+	return 0;
 }
