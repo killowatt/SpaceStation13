@@ -1,5 +1,21 @@
-class Shader
+#ifndef SHADER_HEADER
+#define SHADER_HEADER
+
+namespace Graphics
 {
-public:
-	virtual void xxx() = 0;
-};
+	class Shader
+	{
+	public:
+		int Program;
+		int VertexShader;
+		int FragmentShader;
+
+		virtual void Initialize() = 0;
+		virtual void Update() = 0;
+
+		Shader();
+		~Shader();
+	};
+}
+
+#endif

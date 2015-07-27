@@ -12,13 +12,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Graphics\Test.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="Graphics\Shader.h" />
-    <ClInclude Include="Graphics\Test.h" />
+    <ClInclude Include="Graphics\VertexArray.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DA3F214C-B420-4E40-9089-6F9AF347DCF1}</ProjectGuid>

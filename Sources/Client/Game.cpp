@@ -1,8 +1,6 @@
 #include <iostream>
 #include "Game.h"
 
-#include "Graphics/Test.h"
-
 void Game::Initialize()
 {
 	glClearColor(20.0f / 255, 20.0f / 255, 20.0f / 255, 1.0f);
@@ -17,8 +15,6 @@ void Game::Render()
 }
 Game::Game()
 {
-	TestShader x;
-
 	if (glfwInit())
 	{
 		window = glfwCreateWindow(1280, 720, "Space Station 13", nullptr, nullptr);
