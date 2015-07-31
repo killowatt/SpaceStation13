@@ -6,7 +6,7 @@ namespace Graphics
 	class Shader
 	{
 	public:
-		int Program;
+		int ShaderProgram;
 		int VertexShader;
 		int FragmentShader;
 

@@ -5,6 +5,8 @@ namespace Graphics
 {
 	class VertexArray
 	{
+		unsigned int VertexArrayObject;
+
 		VertexArray();
 		~VertexArray();
 	};
