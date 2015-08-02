@@ -10,6 +10,8 @@ namespace Graphics
 		int VertexShader;
 		int FragmentShader;
 
+
+
 		virtual void Initialize() = 0;
 		virtual void Update() = 0;
 
