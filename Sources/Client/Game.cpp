@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Game.h"
 
+#include "Graphics/VertexBuffer.h"
+
 void Game::Initialize()
 {
 	glClearColor(20.0f / 255, 20.0f / 255, 20.0f / 255, 1.0f);
@@ -13,7 +15,7 @@ void Game::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
-Game::Game()
+Game::Game() // TODO: this is kinda ugly
 {
 	if (glfwInit())
 	{
@@ -22,13 +24,16 @@ Game::Game()
 		if (window)
 		{
 			glfwMakeContextCurrent(window);
-			Initialize();
-			while (!glfwWindowShouldClose(window))
+			if (glewInit() == GLEW_OK)
 			{
-				Update();
-				Render();
-				glfwSwapBuffers(window);
-				glfwPollEvents();
+				Initialize();
+				while (!glfwWindowShouldClose(window))
+				{
+					Update();
+					Render();
+					glfwSwapBuffers(window);
+					glfwPollEvents();
+				}
 			}
 		}
 

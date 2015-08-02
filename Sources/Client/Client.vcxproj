@@ -14,6 +14,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Graphics\Texture.cpp" />
     <ClCompile Include="Graphics\VertexArray.cpp" />
+    <ClCompile Include="Graphics\VertexBuffer.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -22,6 +23,7 @@
     <ClInclude Include="Graphics\Sprite.h" />
     <ClInclude Include="Graphics\Texture.h" />
     <ClInclude Include="Graphics\VertexArray.h" />
+    <ClInclude Include="Graphics\VertexBuffer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DA3F214C-B420-4E40-9089-6F9AF347DCF1}</ProjectGuid>
