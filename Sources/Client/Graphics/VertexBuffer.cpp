@@ -1,9 +1,6 @@
 #include "VertexBuffer.h"
 #include "GL/glew.h"
 
-
-#include <iostream>
-
 using namespace Graphics;
 
 void VertexBuffer::SetBufferData(float* data, int size)

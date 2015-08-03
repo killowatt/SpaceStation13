@@ -6,8 +6,6 @@
 void Game::Initialize()
 {
 	glClearColor(20.0f / 255, 20.0f / 255, 20.0f / 255, 1.0f);
-
-
 }
 void Game::Update()
 {
