@@ -18,7 +18,7 @@ void VertexBuffer::SetBufferData(float* data, int size)
 	}
 
 	glBindBuffer(GL_ARRAY_BUFFER, VertexBufferObject);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * size, bufferData, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * size, bufferData, GL_STATIC_DRAW); // TODO: add dyn/stat draw options :>
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 float* VertexBuffer::GetBufferData()

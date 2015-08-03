@@ -3,6 +3,11 @@
 
 namespace Graphics
 {
+	enum class ShaderState
+	{
+		Static,
+		Dynamic
+	};
 	class Shader
 	{
 	public:
@@ -10,7 +15,7 @@ namespace Graphics
 		int VertexShader;
 		int FragmentShader;
 
-
+		ShaderState State;
 
 		virtual void Initialize() = 0;
 		virtual void Update() = 0;

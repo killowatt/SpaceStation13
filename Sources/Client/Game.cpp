@@ -1,11 +1,13 @@
 #include <iostream>
 #include "Game.h"
 
-#include "Graphics/VertexBuffer.h"
+#include "Graphics/Shader.h"
 
 void Game::Initialize()
 {
 	glClearColor(20.0f / 255, 20.0f / 255, 20.0f / 255, 1.0f);
+
+
 }
 void Game::Update()
 {
