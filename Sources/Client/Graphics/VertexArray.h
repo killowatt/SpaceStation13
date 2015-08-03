@@ -7,12 +7,20 @@ namespace Graphics
 {
 	class VertexArray
 	{
+	private:
+		bool IndexBufferEnabled;
+		unsigned int* IndexBuffer;
+		int IndexBufferSize;
 	public:
 		unsigned int VertexArrayObject;
+		unsigned int IndexBufferObject;
 
 		void AttachBuffer(VertexBuffer* vertexBuffer, int index);
-		void SetIndexBuffer(unsigned int* indexBuffer, int size);
 		void RemoveBuffer(int index);
+
+		void SetIndexBuffer(unsigned int* indexBuffer, int size); // TODO: should we have a seperate class?
+		unsigned int* GetIndexBuffer();
+		void RemoveIndexBuffer();
 
 		VertexArray();
 		~VertexArray();

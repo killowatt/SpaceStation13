@@ -6,8 +6,8 @@ namespace Graphics
 	class VertexBuffer
 	{
 	private:
-		float* bufferData; // TODO: Are other types essential enough to be represented? NAH FLOATS 4 LYFE
-		int bufferSize;
+		float* BufferData; // TODO: Are other types essential enough to be represented? NAH FLOATS 4 LYFE
+		int BufferSize;
 	public:
 		unsigned int VertexBufferObject;
 

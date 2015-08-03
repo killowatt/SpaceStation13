@@ -20,13 +20,36 @@ void VertexArray::RemoveBuffer(int index)
 
 void VertexArray::SetIndexBuffer(unsigned int* indexBuffer, int size)
 {
+	delete IndexBuffer;
+	IndexBuffer = new unsigned int[size];
+	IndexBufferSize = size;
+	for (int i = 0; i < size; i++)
+	{
+		IndexBuffer[i] = indexBuffer[i];
+	}
 
+	glBindVertexArray(VertexArrayObject);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IndexBufferObject);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * IndexBufferSize, IndexBuffer, GL_STATIC_DRAW);
+	glBindVertexArray(0);
 }
-unsigned int* GetIndexBuffer()
+unsigned int* VertexArray::GetIndexBuffer()
 {
+	unsigned int* buffer = new unsigned int[IndexBufferSize];
+	for (int i = 0; i < IndexBufferSize; i++)
+	{
+		buffer[i] = IndexBuffer[i];
+	}
+	return buffer;
 }
 void VertexArray::RemoveIndexBuffer()
 {
+	delete IndexBuffer;
+	IndexBufferSize = 0;
+
+	glBindVertexArray(VertexArrayObject);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 }
 
 VertexArray::VertexArray()
