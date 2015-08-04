@@ -18,9 +18,9 @@ namespace Graphics
 	class Shader
 	{
 	public:
-		int ShaderProgram;
-		int VertexShader;
-		int FragmentShader;
+		unsigned int ShaderProgram;
+		unsigned int VertexShader;
+		unsigned int FragmentShader;
 
 		ShaderState State;
 
@@ -33,8 +33,11 @@ namespace Graphics
 
 		//virtual void Initialize() = 0;
 		//virtual void Update() = 0;
-
-		Shader(const char* vertexShader, const char* fragmentShader, char attributes[][128], int attributeLength);
+		
+		
+	protected:
+		Shader();
+		Shader(const char* vertexShader, const char* fragmentShader);
 		~Shader();
 	};
 }

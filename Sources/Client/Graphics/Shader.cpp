@@ -25,7 +25,10 @@ char* Shader::GetCompileLog(ShaderType shaderType)
 	return log;
 } 
 
-Shader::Shader(const char* vertexShader, const char*fragmentShader, char attributes[][128], int attributesLength)
+Shader::Shader()
+{
+}
+Shader::Shader(const char* vertexShader, const char*fragmentShader)
 {
 	// TODO: if vertex/frag is null, error or replace with emptystring
 
@@ -40,11 +43,6 @@ Shader::Shader(const char* vertexShader, const char*fragmentShader, char attribu
 	ShaderProgram = glCreateProgram();
 	glAttachShader(ShaderProgram, VertexShader);
 	glAttachShader(ShaderProgram, FragmentShader);
-
-	for (int i = 0; i < attributesLength; i++)
-	{
-		glBindAttribLocation(ShaderProgram, i, attributes[i]);
-	}
 
 	glLinkProgram(ShaderProgram);
 }
