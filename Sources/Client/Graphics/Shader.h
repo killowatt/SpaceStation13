@@ -18,7 +18,7 @@ namespace Graphics
 	class Shader
 	{
 	public:
-		unsigned int ShaderProgram;
+		unsigned int ShaderProgram; // TODO: across all gl types. consider copy constructor and whether it should be accessible.
 		unsigned int VertexShader;
 		unsigned int FragmentShader;
 
@@ -34,10 +34,12 @@ namespace Graphics
 		//virtual void Initialize() = 0;
 		//virtual void Update() = 0;
 		
-		
+		Shader& operator =(Shader& other);
+
 	protected:
 		Shader();
 		Shader(const char* vertexShader, const char* fragmentShader);
+	public:
 		~Shader();
 	};
 }

@@ -24,8 +24,8 @@ public:
 	GLFWwindow* Window;
 
 	testshader shader;
-	Graphics::VertexArray vertexArray;
 	Graphics::VertexBuffer vertexBuffer;
+	Graphics::VertexArray vertexArray;
 
 	Game(GLFWwindow* window);
 	Game();

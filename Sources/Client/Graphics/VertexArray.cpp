@@ -64,6 +64,6 @@ VertexArray::VertexArray()
 }
 VertexArray::~VertexArray()
 {
-	glDeleteVertexArrays(1, &VertexArrayObject);
-	glDeleteBuffers(1, &IndexBufferObject);
+	//glDeleteVertexArrays(1, &VertexArrayObject);
+	//glDeleteBuffers(1, &IndexBufferObject);
 }

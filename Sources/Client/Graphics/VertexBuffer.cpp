@@ -1,8 +1,6 @@
 #include "VertexBuffer.h"
 #include <GL/glew.h>
 
-#include <iostream>
-
 using namespace Graphics;
 
 void VertexBuffer::SetBufferData(float* data, int dataSize, int vertexSize)
@@ -46,6 +44,6 @@ VertexBuffer::VertexBuffer()
 }
 VertexBuffer::~VertexBuffer()
 {
-	glDeleteBuffers(1, &VertexBufferObject);
-	delete BufferData;
+	//glDeleteBuffers(1, &VertexBufferObject);
+	//delete BufferData;
 }
