@@ -7,7 +7,7 @@ void VertexArray::AttachBuffer(VertexBuffer* vertexBuffer, int index)
 {
 	glBindVertexArray(VertexArrayObject);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer->VertexBufferObject);
-	glVertexAttribPointer(index, sizeof(float) * vertexBuffer->GetBufferSize(), GL_FLOAT, false, 0, 0);
+	glVertexAttribPointer(index, vertexBuffer->GetVertexSize(), GL_FLOAT, false, 0, 0);
 	glEnableVertexAttribArray(index);
 	glBindVertexArray(0);
 }
@@ -42,6 +42,10 @@ unsigned int* VertexArray::GetIndexBuffer()
 	}
 	return buffer;
 }
+int VertexArray::GetIndexBufferSize()
+{
+	return IndexBufferSize;
+}
 void VertexArray::RemoveIndexBuffer()
 {
 	delete IndexBuffer;
@@ -56,6 +60,7 @@ VertexArray::VertexArray()
 {
 	glGenVertexArrays(1, &VertexArrayObject);
 	glGenBuffers(1, &IndexBufferObject);
+	IndexBuffer = nullptr;
 }
 VertexArray::~VertexArray()
 {

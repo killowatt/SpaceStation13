@@ -8,12 +8,14 @@ namespace Graphics
 	private:
 		float* BufferData; // TODO: Are other types essential enough to be represented? NAH FLOATS 4 LYFE
 		int BufferSize;
+		int VertexSize;
 	public:
 		unsigned int VertexBufferObject;
 
-		void SetBufferData(float* data, int size);
+		void SetBufferData(float* data, int dataSize, int vertexSize);
 		float* GetBufferData();
 		int GetBufferSize();
+		int GetVertexSize();
 
 		VertexBuffer();
 		~VertexBuffer();

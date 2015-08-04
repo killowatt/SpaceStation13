@@ -20,6 +20,7 @@ namespace Graphics
 
 		void SetIndexBuffer(unsigned int* indexBuffer, int size); // TODO: should we have a seperate class?
 		unsigned int* GetIndexBuffer();
+		int GetIndexBufferSize();
 		void RemoveIndexBuffer();
 
 		VertexArray();
