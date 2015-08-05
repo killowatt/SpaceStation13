@@ -10,7 +10,7 @@ namespace Graphics
 		int BufferSize;
 		int VertexSize;
 	public:
-		unsigned int VertexBufferObject;
+		unsigned int VertexBufferObject; // TODO: rename this and similar class' to xID?
 
 		void SetBufferData(float* data, int dataSize, int vertexSize);
 		float* GetBufferData();
