@@ -54,11 +54,18 @@ char* Shader::GetCompileLog(ShaderType shaderType)
 
 Shader& Shader::operator =(Shader& other)
 {
-	std::cout << "COPY" << std::endl;
+	if (ShaderProgram > 0)
+	{
+		glDetachShader(ShaderProgram, VertexShader);
+		glDetachShader(ShaderProgram, FragmentShader);
+		glDeleteProgram(ShaderProgram);
+	}
+	if (VertexShader > 0) glDeleteShader(VertexShader);
+	if (FragmentShader > 0) glDeleteShader(FragmentShader);
 
 	ShaderProgram = other.ShaderProgram;
-	VertexShader = other.VertexShader;
-	FragmentShader = other.FragmentShader;
+	VertexShader = other.VertexShader; 
+	FragmentShader = other.FragmentShader; // TODO: should we copy matrices?
 
 	other.ShaderProgram = 0;
 	other.VertexShader = 0;
@@ -73,8 +80,6 @@ Shader::Shader()
 Shader::Shader(const char* vertexShader, const char* fragmentShader)
 {
 	// TODO: if vertex/frag is null, error or replace with emptystring?
-	std::cout << "what the fuck is happening?" << std::endl;
-
 	VertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(VertexShader, 1, &vertexShader, nullptr);
 	glCompileShader(VertexShader);

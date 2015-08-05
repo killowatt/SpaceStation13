@@ -56,6 +56,25 @@ void VertexArray::RemoveIndexBuffer()
 	glBindVertexArray(0);
 }
 
+VertexArray& VertexArray::operator =(VertexArray& other)
+{
+	glDeleteVertexArrays(1, &VertexArrayObject);
+	glDeleteBuffers(1, &IndexBufferObject);
+	delete IndexBuffer;
+
+	VertexArrayObject = other.VertexArrayObject;
+	IndexBufferObject = other.IndexBufferObject;
+	IndexBuffer = other.IndexBuffer;
+	IndexBufferSize = other.IndexBufferSize;
+	IndexBufferEnabled = other.IndexBufferEnabled;
+
+	other.VertexArrayObject = 0;
+	other.IndexBufferObject = 0;
+	other.IndexBuffer = nullptr;
+
+	return *this;
+}
+
 VertexArray::VertexArray()
 {
 	glGenVertexArrays(1, &VertexArrayObject);
@@ -64,6 +83,7 @@ VertexArray::VertexArray()
 }
 VertexArray::~VertexArray()
 {
-	//glDeleteVertexArrays(1, &VertexArrayObject);
-	//glDeleteBuffers(1, &IndexBufferObject);
+	glDeleteVertexArrays(1, &VertexArrayObject);
+	glDeleteBuffers(1, &IndexBufferObject);
+	delete IndexBuffer;
 }

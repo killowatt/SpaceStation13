@@ -8,9 +8,9 @@ namespace Graphics
 	class VertexArray
 	{
 	private:
-		bool IndexBufferEnabled;
 		unsigned int* IndexBuffer;
 		int IndexBufferSize;
+		bool IndexBufferEnabled; // TODO: implement
 	public:
 		unsigned int VertexArrayObject;
 		unsigned int IndexBufferObject;
@@ -22,6 +22,8 @@ namespace Graphics
 		unsigned int* GetIndexBuffer();
 		int GetIndexBufferSize();
 		void RemoveIndexBuffer();
+
+		VertexArray& operator =(VertexArray& other);
 
 		VertexArray();
 		~VertexArray();

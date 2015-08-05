@@ -37,6 +37,22 @@ int VertexBuffer::GetVertexSize()
 	return VertexSize;
 }
 
+VertexBuffer& VertexBuffer::operator =(VertexBuffer& other)
+{
+	glDeleteBuffers(1, &VertexBufferObject);
+	delete BufferData;
+
+	VertexBufferObject = other.VertexBufferObject;
+	BufferData = other.BufferData;
+	BufferSize = other.BufferSize;
+	VertexSize = other.VertexSize;
+
+	other.VertexBufferObject = 0;
+	other.BufferData = nullptr;
+
+	return *this;
+}
+
 VertexBuffer::VertexBuffer()
 {
 	glGenBuffers(1, &VertexBufferObject);
@@ -44,6 +60,6 @@ VertexBuffer::VertexBuffer()
 }
 VertexBuffer::~VertexBuffer()
 {
-	//glDeleteBuffers(1, &VertexBufferObject);
-	//delete BufferData;
+	glDeleteBuffers(1, &VertexBufferObject);
+	delete BufferData;
 }

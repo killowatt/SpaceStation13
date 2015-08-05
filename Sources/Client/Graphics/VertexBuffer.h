@@ -17,6 +17,8 @@ namespace Graphics
 		int GetBufferSize();
 		int GetVertexSize();
 
+		VertexBuffer& operator =(VertexBuffer& other);
+
 		VertexBuffer();
 		~VertexBuffer();
 	};
