@@ -17,8 +17,11 @@ namespace Graphics
 		int GetBufferSize();
 		int GetVertexSize();
 
-		VertexBuffer& operator =(VertexBuffer& other);
+	private:
+		void operator =(VertexBuffer& other) = delete;
+		VertexBuffer(const VertexBuffer&) = delete;
 
+	public:
 		VertexBuffer();
 		~VertexBuffer();
 	};

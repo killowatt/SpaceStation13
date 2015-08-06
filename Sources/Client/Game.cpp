@@ -76,9 +76,9 @@ void Game::Initialize()
 	std::cout << "GL Error State: " << glGetError() << std::endl;
 	std::cout << "Fragment Shader Compile Log:" << std::endl << shader.GetCompileLog(Graphics::ShaderType::Fragment) << std::endl;
 
-	vertexBuffer = Graphics::VertexBuffer();
+	vertexBuffer = new Graphics::VertexBuffer();
 	float buff[] = { -1, 1, 1, 1, -1, -1, 1, -1 };
-	vertexBuffer.SetBufferData(buff, 8, 2);
+	vertexBuffer->SetBufferData(buff, 8, 2);
 
 	vertexBufferTexCoord = new Graphics::VertexBuffer();
 	float txcbuff[] = { 0, 1, 1, 1, 0, 0, 1, 0 };
@@ -87,10 +87,10 @@ void Game::Initialize()
 	//std::cout << "GL Error State: " << glGetError() << std::endl;
 
 	unsigned int ind[] = { 0, 1, 2, 2, 1, 3 };
-	vertexArray = Graphics::VertexArray();
-	vertexArray.AttachBuffer(&vertexBuffer, 0);
-	vertexArray.AttachBuffer(vertexBufferTexCoord, 1);
-	vertexArray.SetIndexBuffer(ind, 6);
+	vertexArray = new Graphics::VertexArray();
+	vertexArray->AttachBuffer(vertexBuffer, 0);
+	vertexArray->AttachBuffer(vertexBufferTexCoord, 1);
+	vertexArray->SetIndexBuffer(ind, 6);
 
 	std::cout << "GL Error State: " << glGetError() << std::endl;
 	std::cout << "GL Error State: " << glGetError() << std::endl;
@@ -110,13 +110,13 @@ void Game::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	glBindVertexArray(vertexArray.VertexArrayObject);
+	glBindVertexArray(vertexArray->VertexArrayObject);
 	glUseProgram(shader.ShaderProgram);
 
 	//shader.Update();
 	
 	//glDrawArrays(GL_TRIANGLES, 0, 6);
-	glDrawElements(GL_TRIANGLES, vertexArray.GetIndexBufferSize(), GL_UNSIGNED_INT, nullptr);
+	glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBufferSize(), GL_UNSIGNED_INT, nullptr);
 }
 Game::Game(GLFWwindow* window) // TODO: this is kinda ugly
 {

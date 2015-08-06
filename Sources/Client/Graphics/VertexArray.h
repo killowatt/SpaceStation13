@@ -23,8 +23,11 @@ namespace Graphics
 		int GetIndexBufferSize();
 		void RemoveIndexBuffer();
 
-		VertexArray& operator =(VertexArray& other);
+	private:
+		void operator =(VertexArray& other) = delete;
+		VertexArray(const VertexArray&) = delete;
 
+	public:
 		VertexArray();
 		~VertexArray();
 	};

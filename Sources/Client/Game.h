@@ -40,9 +40,9 @@ public:
 	GLFWwindow* Window;
 
 	testshader shader;
-	Graphics::VertexBuffer vertexBuffer;
+	Graphics::VertexBuffer* vertexBuffer;
 	Graphics::VertexBuffer* vertexBufferTexCoord;
-	Graphics::VertexArray vertexArray;
+	Graphics::VertexArray* vertexArray;
 	Graphics::Texture* texture;
 
 	Game(GLFWwindow* window);

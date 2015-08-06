@@ -37,21 +37,21 @@ int VertexBuffer::GetVertexSize()
 	return VertexSize;
 }
 
-VertexBuffer& VertexBuffer::operator =(VertexBuffer& other)
-{
-	glDeleteBuffers(1, &VertexBufferObject); // TODO: privatise = operator to prevent copies? (all sim. class)
-	delete BufferData;
-
-	VertexBufferObject = other.VertexBufferObject;
-	BufferData = other.BufferData;
-	BufferSize = other.BufferSize;
-	VertexSize = other.VertexSize;
-
-	other.VertexBufferObject = 0;
-	other.BufferData = nullptr;
-
-	return *this;
-}
+//VertexBuffer& VertexBuffer::operator =(VertexBuffer& other)
+//{
+//	glDeleteBuffers(1, &VertexBufferObject); // TODO: privatise = operator to prevent copies? (all sim. class)
+//	delete BufferData;
+//
+//	VertexBufferObject = other.VertexBufferObject;
+//	BufferData = other.BufferData;
+//	BufferSize = other.BufferSize;
+//	VertexSize = other.VertexSize;
+//
+//	other.VertexBufferObject = 0;
+//	other.BufferData = nullptr;
+//
+//	return *this;
+//}
 
 VertexBuffer::VertexBuffer()
 {
