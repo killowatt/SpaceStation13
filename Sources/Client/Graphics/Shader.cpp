@@ -67,6 +67,10 @@ Shader& Shader::operator =(Shader& other)
 	VertexShader = other.VertexShader; 
 	FragmentShader = other.FragmentShader; // TODO: should we copy matrices?
 
+	Model = other.Model;
+	View = other.View;
+	Projection = other.Projection;
+
 	other.ShaderProgram = 0;
 	other.VertexShader = 0;
 	other.FragmentShader = 0;

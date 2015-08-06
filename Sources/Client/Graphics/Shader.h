@@ -31,8 +31,8 @@ namespace Graphics
 		bool GetCompileStatus(ShaderType shaderType);
 		char* GetCompileLog(ShaderType shaderType);
 
-		//virtual void Initialize() = 0;
-		//virtual void Update() = 0;
+		virtual void Initialize() = 0;
+		virtual void Update() = 0;
 		
 		Shader& operator =(Shader& other);
 

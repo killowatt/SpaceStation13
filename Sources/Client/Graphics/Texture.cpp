@@ -3,7 +3,7 @@
 
 using namespace Graphics;
 
-void Texture::SetTexture(unsigned char* data, int size, int width, int height, bool alphaEnabled)
+void Texture::SetTexture(unsigned char* data, int size, unsigned int width, unsigned int height, bool alphaEnabled)
 {
 	delete Pixels;
 	Pixels = new unsigned char[size];
@@ -18,10 +18,16 @@ void Texture::SetTexture(unsigned char* data, int size, int width, int height, b
 	}
 
 	int format = alphaEnabled ? GL_RGBA : GL_RGB;
-
+	
 	glBindTexture(GL_TEXTURE_2D, TextureID);
 	glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, Pixels);
-	glBindTexture(GL_TEXTURE_2D, TextureID);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 unsigned char* Texture::GetTexture()
 {	

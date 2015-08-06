@@ -9,22 +9,28 @@ namespace Graphics
 	//}
 	class Texture
 	{
-	private:
-		unsigned char* Pixels;
-		int TextureSize;
-		int Width;
-		int Height;
-		bool AlphaEnabled;
 	public:
 		unsigned int TextureID;
 
-		void SetTexture(unsigned char* pixels, int size, int width, int height, bool alphaEnabled);
+	private:
+		unsigned char* Pixels;
+		int TextureSize;
+		unsigned int Width;
+		unsigned int Height;
+		bool AlphaEnabled;
+
+	public:
+		void SetTexture(unsigned char* pixels, int size, unsigned int width, unsigned int height, bool alphaEnabled);
 		unsigned char* GetTexture();
 		int GetTextureSize();
 		int GetWidth();
 		int GetHeight();
 		bool GetAlphaEnabled();
 
+	private:
+		Texture& operator =(Texture texture);
+
+	public:
 		Texture();
 		~Texture();
 	};
