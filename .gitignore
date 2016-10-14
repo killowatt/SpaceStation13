@@ -6,6 +6,12 @@ Build/
 # Temp Files
 Temp/
 
+# Dependency Source Files
+Dependencies/Sources/
+
+# Documents
+Documents/
+
 # Misc Files
 *.sdf
 *.opensdf
