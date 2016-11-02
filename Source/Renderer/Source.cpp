@@ -1,7 +1,8 @@
 #include <iostream>
+#include "Test.h"
 
-int main()
+void TestFunctionFromRenderer()
 {
-	std::cout << "Space Station 13 Renderer!\n";
-	std::getchar();
+	std::cout << "Hello world!!\n";
+	std::cout << "Renderer!!\n";
 }
