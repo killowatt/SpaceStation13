@@ -86,7 +86,7 @@ int main()
 	
 	SDL_Surface *bmp = SDL_LoadBMP("test.png");
 	tex = SDL_CreateTextureFromSurface(ren, bmp);
-	SDL_FreeSurface(bmp);
+	//SDL_FreeSurface(bmp);
 
 
 

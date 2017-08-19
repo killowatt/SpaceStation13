@@ -13,6 +13,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\source\SpaceStation13\Source.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\source\SpaceStation13\Engine.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{B242B230-F4AF-41EA-A618-8E1ED84D07E1}</ProjectGuid>
