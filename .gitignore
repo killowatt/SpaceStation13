@@ -1,21 +1,16 @@
 # Space Station 13 Git Ignore
 
 # Build Files
-Build/
+binaries/
+temp/
 
-# Temp Files
-Temp/
-
-# Dependency Source Files
-Dependencies/Sources/
-
-# Documents
-Documents/
-
-# Misc Files
+# Visual Studio Specific Files
+.vs/
 *.sdf
 *.opensdf
 *.opendb
+*.VC.db
+*.VC.VC.opendb
 
 # User-specific files
 *.suo
@@ -24,3 +19,4 @@ Documents/
 
 # NSight User Files
 *.nvuser
+
