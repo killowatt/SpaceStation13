@@ -18,6 +18,14 @@
     <ClInclude Include="..\..\source\SpaceStation13\Entity.h" />
     <ClInclude Include="..\..\source\SpaceStation13\Tile.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="renderer.vcxproj">
+      <Project>{866e8dd7-b788-4df9-8d40-987b364cc736}</Project>
+    </ProjectReference>
+    <ProjectReference Include="server.vcxproj">
+      <Project>{6ac28548-cb08-47b2-a1ca-03d840001361}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{B242B230-F4AF-41EA-A618-8E1ED84D07E1}</ProjectGuid>
@@ -71,7 +79,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(OutDir)Renderer_x64.lib;$(Configuration)\SDL2.lib;lua53.lib;opengl32.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(Configuration)\SDL2.lib;lua53.lib;opengl32.lib</AdditionalDependencies>
       <SubSystem>
       </SubSystem>
     </Link>
@@ -93,7 +101,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(OutDir)Renderer_x64.lib;$(Configuration)\SDL2.lib;lua53.lib;opengl32.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(Configuration)\SDL2.lib;$(Configuration)\glew32sd.lib;lua53.lib;opengl32.lib</AdditionalDependencies>
       <SubSystem>
       </SubSystem>
     </Link>

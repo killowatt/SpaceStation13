@@ -27,19 +27,16 @@ extern "C" {
 #include "Texture.h"
 
 static bool quitting = false;
-static float r = 0.0f;
-static SDL_Window *window = NULL;
-static SDL_GLContext gl_context;
 
-SDL_Renderer* ren;
-SDL_Texture* tex;
 float rt = 0.0f;
+
+RendererGL* renderer;
+Texture* textur;
 
 void render() {
 
 
 		//First clear the renderer
-		SDL_GL_MakeCurrent(window, gl_context);
 
 		glClear(GL_COLOR_BUFFER_BIT);
 
@@ -51,13 +48,17 @@ void render() {
 		glScalef(0.5f, 0.5f, 0.5f);
 		rt += 0.5f;
 
-		float* x = new float(64);
-		SDL_GL_BindTexture(tex, x, x);
+		glBindTexture(GL_TEXTURE_2D, textur->GetTextureID());
+
+		glEnable(GL_TEXTURE_2D); // HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEY
+		// THIS MIGHT BE IMPORTANT
+
+		std::cout << glGetError() << "\n";
+		std::cout << "ERROR?";
 
 		glBegin(GL_TRIANGLE_STRIP);
 
 		float rp = 4;
-
 
 		glTexCoord2f(0.0, 0.0);
 		glVertex2f(-1.0, -1.0);
@@ -73,7 +74,7 @@ void render() {
 
 		glEnd();
 
-		SDL_GL_SwapWindow(window);
+		renderer->SwapBuffers();
 } //render
 
 
@@ -162,45 +163,39 @@ int main()
 	//std::getchar();
 
 
-	//if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
-	//	SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
-	//	return 1;
-	//}
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
+		SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
+		return 1;
+	}
 
-	//window = SDL_CreateWindow("title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 512, 512, SDL_WINDOW_OPENGL);
-
-	//gl_context = SDL_GL_CreateContext(window);
-
-	//SDL_AddEventWatch(watch, NULL);
+	SDL_AddEventWatch(watch, NULL);
 
 
-	//ren = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	//
-	//SDL_Surface *bmp = SDL_LoadBMP("test.png");
-	//tex = SDL_CreateTextureFromSurface(ren, bmp);
-	////SDL_FreeSurface(bmp);
+	renderer = new RendererGL();
+	renderer->Initialize();
 
+	textur = renderer->CreateTexture();
 
+	glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 
+	while (!quitting) {
 
-	//while (!quitting) {
+		SDL_Event event;
+		while (SDL_PollEvent(&event)) {
+			if (event.type == SDL_QUIT) {
+				quitting = true;
+			}
+		}
 
-	//	SDL_Event event;
-	//	while (SDL_PollEvent(&event)) {
-	//		if (event.type == SDL_QUIT) {
-	//			quitting = true;
-	//		}
-	//	}
+		render();
 
-	//	render();
+	}
 
-	//}
-
-	//SDL_DelEventWatch(watch, NULL);
+	SDL_DelEventWatch(watch, NULL);
 	//SDL_GL_DeleteContext(gl_context);
 	//SDL_DestroyWindow(window);
-	//SDL_Quit();
+	SDL_Quit();
 
-	//exit(0);
+	exit(0);
 
 } //main

@@ -11,12 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\source\Renderer\lodepng.h" />
     <ClInclude Include="..\..\source\Renderer\RendererGL.h" />
     <ClInclude Include="..\..\source\Renderer\Shader.h" />
     <ClInclude Include="..\..\source\Renderer\Sprite.h" />
     <ClInclude Include="..\..\source\Renderer\Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\source\Renderer\lodepng.cpp" />
     <ClCompile Include="..\..\source\Renderer\RendererGL.cpp" />
     <ClCompile Include="..\..\source\Renderer\Shader.cpp" />
     <ClCompile Include="..\..\source\Renderer\Sprite.cpp" />
@@ -71,6 +73,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\SpaceStation13</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
@@ -91,6 +94,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\SpaceStation13</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

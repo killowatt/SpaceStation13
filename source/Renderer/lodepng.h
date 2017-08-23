@@ -24,7 +24,7 @@ freely, subject to the following restrictions:
 */
 
 #ifndef LODEPNG_H
-#define LODEPNG_H
+#define LODEPNG_
 
 #include <string.h> /*for size_t*/
 

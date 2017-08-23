@@ -14,7 +14,12 @@ Texture* RendererGL::CreateTexture()
 		15, 0, 150, 255,
 		240, 0, 150, 255,
 	};
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); // TODO: use set in tex
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 	return texture;
 }
@@ -26,15 +31,19 @@ void RendererGL::Render(Sprite* sprite)
 
 void RendererGL::Initialize()
 {
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-
-	window = SDL_CreateWindow("Space Station 13", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		1280, 720, SDL_WINDOW_OPENGL);
-	if (window == nullptr)
+	Window = SDL_CreateWindow("Space Station 13", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+		512, 512, SDL_WINDOW_OPENGL);
+	if (Window == nullptr)
 		return; // TODO: error
 
+	Context = SDL_GL_CreateContext(Window);
+	SDL_GL_MakeCurrent(Window, Context);
+
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3); // TODO: is this good dad
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
+	glewExperimental = true;
 	if (glewInit() != GLEW_OK)
 		return; // TODO: error
 
@@ -44,10 +53,10 @@ void RendererGL::Initialize()
 
 RendererGL::RendererGL()
 {
-	window = nullptr;
+	Window = nullptr;
 }
 RendererGL::~RendererGL()
 {
-	if (window)
-		SDL_DestroyWindow(window);
+	if (Window)
+		SDL_DestroyWindow(Window);
 }

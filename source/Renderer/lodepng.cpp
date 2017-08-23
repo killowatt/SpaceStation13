@@ -28,6 +28,10 @@ The manual and changelog are in the header file "lodepng.h"
 Rename this file to lodepng.cpp to use it for C++, or to lodepng.c to use it for C.
 */
 
+// SS13 SILENCE WARNINGS
+#pragma warning(disable: 4334; disable: 4267)
+// SS13
+
 #include "lodepng.h"
 
 #include <limits.h>

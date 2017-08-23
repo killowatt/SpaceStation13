@@ -13,6 +13,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\source\Server\Server.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\source\Server\Server.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{6AC28548-CB08-47B2-A1CA-03D840001361}</ProjectGuid>
