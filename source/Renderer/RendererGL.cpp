@@ -4,9 +4,9 @@
 
 Texture* RendererGL::CreateTexture()
 {
-	uint32 textureID;
-	glGenTextures(1, &textureID);
-	glBindTexture(GL_TEXTURE_2D, textureID);
+	Texture* texture = new Texture(this);
+	glBindTexture(GL_TEXTURE_2D, texture->GetTextureID()); // We know we just binded it
+	// but y not bind it again :^)
 
 	GLubyte image[] = {
 		240, 0, 150, 255,
@@ -16,8 +16,12 @@ Texture* RendererGL::CreateTexture()
 	};
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 
-	Texture* texture = new Texture(this, textureID);
 	return texture;
+}
+
+void RendererGL::Render(Sprite* sprite)
+{
+	glBindTexture(GL_TEXTURE_2D, sprite->GetTexture()->GetTextureID());
 }
 
 void RendererGL::Initialize()

@@ -14,10 +14,18 @@ void Texture::LoadFromFile(const char* fileName)
 		image.data());
 }
 
-Texture::Texture(RendererGL* renderer, uint32 textureID)
+Texture::Texture(RendererGL* renderer)
 {
 	Renderer = renderer;
-	TextureID = textureID;
+
+	if (!Renderer)
+		return; // TODO: error
+
+	// TODO: we need to check if the renderer above is the current context. if otherwise,
+	// we need to either error or do it ourself. consider code repetition (for erry rendaclass)
+
+	glGenTextures(1, &TextureID);
+	glBindTexture(GL_TEXTURE_2D, TextureID);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);

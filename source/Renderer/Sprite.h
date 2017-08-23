@@ -3,6 +3,8 @@
 #include "RendererGL.h"
 #include "Texture.h"
 
+class RendererGL;
+class Texture;
 class Sprite : NonCopyable
 {
 private:
@@ -10,8 +12,7 @@ private:
 	Texture* Image;
 
 public:
-
-	
+	Texture* GetTexture() { return Image; }
 
 	Sprite(RendererGL* renderer, Texture* texture);
 	~Sprite();

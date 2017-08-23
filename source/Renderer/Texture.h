@@ -14,5 +14,5 @@ public:
 
 	void LoadFromFile(const char* fileName);
 
-	Texture(RendererGL* renderer, uint32 textureID);
+	Texture(RendererGL* renderer);
 };

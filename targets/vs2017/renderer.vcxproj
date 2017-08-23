@@ -12,11 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Renderer\RendererGL.h" />
+    <ClInclude Include="..\..\source\Renderer\Shader.h" />
     <ClInclude Include="..\..\source\Renderer\Sprite.h" />
     <ClInclude Include="..\..\source\Renderer\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Renderer\RendererGL.cpp" />
+    <ClCompile Include="..\..\source\Renderer\Shader.cpp" />
     <ClCompile Include="..\..\source\Renderer\Sprite.cpp" />
     <ClCompile Include="..\..\source\Renderer\Texture.cpp" />
   </ItemGroup>
