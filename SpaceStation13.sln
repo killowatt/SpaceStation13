@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpaceStation13", "targets\vs2017\spacestation13.vcxproj", "{B242B230-F4AF-41EA-A618-8E1ED84D07E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6AC28548-CB08-47B2-A1CA-03D840001361} = {6AC28548-CB08-47B2-A1CA-03D840001361}
+		{866E8DD7-B788-4DF9-8D40-987B364CC736} = {866E8DD7-B788-4DF9-8D40-987B364CC736}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "targets\vs2017\server.vcxproj", "{6AC28548-CB08-47B2-A1CA-03D840001361}"
 EndProject
@@ -30,5 +34,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9644A6E6-F73D-4375-9BF7-1D23EF5EFC77}
 	EndGlobalSection
 EndGlobal

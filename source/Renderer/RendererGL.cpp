@@ -2,6 +2,24 @@
 
 #include "GL/glew.h"
 
+Texture* RendererGL::CreateTexture()
+{
+	uint32 textureID;
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+
+	GLubyte image[] = {
+		240, 0, 150, 255,
+		15, 0, 150, 255,
+		15, 0, 150, 255,
+		240, 0, 150, 255,
+	};
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+
+	Texture* texture = new Texture(this, textureID);
+	return texture;
+}
+
 void RendererGL::Initialize()
 {
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
@@ -26,4 +44,6 @@ RendererGL::RendererGL()
 }
 RendererGL::~RendererGL()
 {
+	if (window)
+		SDL_DestroyWindow(window);
 }

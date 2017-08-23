@@ -1,13 +1,18 @@
 #pragma once
+#include "Engine.h"
 #include "RendererGL.h"
 
-class Texture
+class RendererGL;
+class Texture : NonCopyable
 {
 private:
 	RendererGL* Renderer;
-	int TextureID;
-
+	uint32 TextureID;
 
 public:
-	Texture(RendererGL* renderer);
+	uint32 GetTextureID() const { return TextureID; }
+
+	void LoadFromFile(const char* fileName);
+
+	Texture(RendererGL* renderer, uint32 textureID);
 };
