@@ -16,6 +16,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\source\SpaceStation13\Engine.h" />
     <ClInclude Include="..\..\source\SpaceStation13\Entity.h" />
+    <ClInclude Include="..\..\source\SpaceStation13\TestShader.h" />
     <ClInclude Include="..\..\source\SpaceStation13\Tile.h" />
   </ItemGroup>
   <ItemGroup>

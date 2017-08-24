@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "RendererGL.h"
 #include "glm/mat4x4.hpp"
+#include <string>
 
 enum class ShaderType
 {
@@ -14,11 +15,15 @@ enum class ShaderState
 	Dynamic,
 	Framebuffer // maybe we dont need it
 };
+class RendererGL;
 class Shader : NonCopyable
 {
 private:
 	RendererGL* Renderer;
 
+	friend class RendererGL;
+	virtual void Update() = 0;
+protected:
 	uint32 ShaderProgram;
 	uint32 VertexShader;
 	uint32 PixelShader;
@@ -29,14 +34,19 @@ private:
 	glm::mat4 View;
 	glm::mat4 Projection;
 
-public:
-	virtual void Initialize() = 0;
-	virtual void Update() = 0;
+	std::string LoadFile(const char* fileName);
 
+public:
+	virtual void Initialize();
+
+	ShaderState GetShaderState() { return State; }
 	bool GetCompileResult(ShaderType type);
 	const char* GetCompileLog(ShaderType type);
 
+	uint32 GetProgram() { return ShaderProgram; }
+
+protected:
 	Shader(RendererGL* renderer, const char* vertexSource, const char* pixelSource,
 		ShaderState state);
-	~Shader();
+	~Shader(); // TODO: what do we do with this under protected?
 };

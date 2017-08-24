@@ -25,6 +25,7 @@ extern "C" {
 
 #include "RendererGL.h"
 #include "Texture.h"
+#include "TestShader.h"
 
 static bool quitting = false;
 
@@ -32,47 +33,52 @@ float rt = 0.0f;
 
 RendererGL* renderer;
 Texture* textur;
+Sprite* spri;
+
+TestShader* shad;
 
 void render() {
 
-
 		//First clear the renderer
 
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glLoadIdentity();
+		//glLoadIdentity();
 
 
-		glRotatef(rt, 0, 0, 1);
-		glRotatef(rt, 1, 0, 0);
-		glScalef(0.5f, 0.5f, 0.5f);
-		rt += 0.5f;
+		//glRotatef(rt, 0, 0, 1);
+		//glRotatef(rt, 1, 0, 0);
+		//glScalef(0.5f, 0.5f, 0.5f);
+		//rt += 0.5f;
 
-		glBindTexture(GL_TEXTURE_2D, textur->GetTextureID());
+		//glBindTexture(GL_TEXTURE_2D, textur->GetTextureID());
 
-		glEnable(GL_TEXTURE_2D); // HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEY
+		//glEnable(GL_TEXTURE_2D); // HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEY
 		// THIS MIGHT BE IMPORTANT
 
 		std::cout << glGetError() << "\n";
-		std::cout << "ERROR?";
 
-		glBegin(GL_TRIANGLE_STRIP);
 
-		float rp = 4;
+		//glBegin(GL_TRIANGLE_STRIP);
 
-		glTexCoord2f(0.0, 0.0);
-		glVertex2f(-1.0, -1.0);
+		//float rp = 4;
 
-		glTexCoord2f(rp, 0.0);
-		glVertex2f(1.0, -1.0);
+		//glTexCoord2f(0.0, 0.0);
+		//glVertex2f(-1.0, -1.0);
 
-		glTexCoord2f(0.0, rp);
-		glVertex2f(-1.0, 1.0);
+		//glTexCoord2f(rp, 0.0);
+		//glVertex2f(1.0, -1.0);
 
-		glTexCoord2f(rp, rp);
-		glVertex2f(1.0, 1.0);
+		//glTexCoord2f(0.0, rp);
+		//glVertex2f(-1.0, 1.0);
 
-		glEnd();
+		//glTexCoord2f(rp, rp);
+		//glVertex2f(1.0, 1.0);
+
+		//glEnd();
+
+		renderer->Render(spri);
+
 
 		renderer->SwapBuffers();
 } //render
@@ -176,7 +182,23 @@ int main()
 
 	textur = renderer->CreateTexture();
 
-	glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
+	std::cout << glGetError() << "\n";
+	spri = new Sprite(renderer, textur);
+	std::cout << glGetError() << "\n";
+
+	shad = new TestShader(renderer);
+	std::cout << glGetError() << "\n";
+
+	shad->Initialize();
+	std::cout << glGetError() << "\n";
+
+	if (!shad->GetCompileResult(ShaderType::Pixel) ||
+		!shad->GetCompileResult(ShaderType::Vertex))
+		return 1; // TODO:
+
+
+	renderer->SetShader(shad);
+	std::cout << glGetError() << "\n";
 
 	while (!quitting) {
 

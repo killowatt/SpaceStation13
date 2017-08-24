@@ -23,10 +23,22 @@ Texture* RendererGL::CreateTexture()
 
 	return texture;
 }
+Sprite* RendererGL::CreateSprite(Texture* texture)
+{
+	return new Sprite(this, texture);
+}
 
 void RendererGL::Render(Sprite* sprite)
 {
-	glBindTexture(GL_TEXTURE_2D, sprite->GetTexture()->GetTextureID());
+	if (!CurrentShader)
+		return; // TODO: guess what
+
+	glUseProgram(CurrentShader->GetProgram());
+	if (CurrentShader->GetShaderState() == ShaderState::Dynamic)
+		CurrentShader->Update();
+
+	glBindVertexArray(sprite->GetVertexArrayObject());
+	glDrawArrays(GL_QUADS, 0, sprite->GetBufferSize());
 }
 
 void RendererGL::Initialize()
@@ -49,6 +61,11 @@ void RendererGL::Initialize()
 
 	if (SDL_GL_SetSwapInterval(1) != 0)
 		return; // TODO: error
+
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 }
 
 RendererGL::RendererGL()
