@@ -11,7 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\source\SpaceStation13\Source.cpp" />
+    <ClCompile Include="..\..\source\SpaceStation13\Engine.cpp" />
+    <ClCompile Include="..\..\source\SpaceStation13\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\SpaceStation13\Engine.h" />
@@ -102,7 +103,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(Configuration)\SDL2.lib;$(Configuration)\glew32sd.lib;lua53.lib;opengl32.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(Configuration)\SDL2.lib;lua53.lib;opengl32.lib</AdditionalDependencies>
       <SubSystem>
       </SubSystem>
     </Link>

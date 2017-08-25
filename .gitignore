@@ -4,6 +4,9 @@
 binaries/
 temp/
 
+# Game Content
+data/
+
 # Visual Studio Specific Files
 .vs/
 *.sdf

@@ -10,9 +10,7 @@
 void Shader::Initialize()
 {
 	// TODO: renderer check call here maybe?
-	std::cout << glGetError() << "!!!!!! \n";
 	glUseProgram(ShaderProgram);
-	std::cout << glGetError() << "!!!!! \n";
 }
 
 bool Shader::GetCompileResult(ShaderType type)
