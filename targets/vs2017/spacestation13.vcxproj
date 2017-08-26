@@ -11,16 +11,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\source\SpaceStation13\Engine.cpp" />
     <ClCompile Include="..\..\source\SpaceStation13\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\source\SpaceStation13\Engine.h" />
     <ClInclude Include="..\..\source\SpaceStation13\Entity.h" />
     <ClInclude Include="..\..\source\SpaceStation13\TestShader.h" />
     <ClInclude Include="..\..\source\SpaceStation13\Tile.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="plasma.vcxproj">
+      <Project>{ebbfaa8f-089b-4b43-93af-d3ead87d4a9b}</Project>
+    </ProjectReference>
     <ProjectReference Include="renderer.vcxproj">
       <Project>{866e8dd7-b788-4df9-8d40-987b364cc736}</Project>
     </ProjectReference>
@@ -76,12 +77,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Renderer</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Plasma;$(SolutionDir)source\Renderer</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SDL_MAIN_HANDLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(Configuration)\SDL2.lib;lua53.lib;opengl32.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(Configuration)\SDL2.lib;$(Configuration)\ChakraCore.lib;opengl32.lib</AdditionalDependencies>
       <SubSystem>
       </SubSystem>
     </Link>
@@ -96,14 +97,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Plasma;$(SolutionDir)source\Renderer</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SDL_MAIN_HANDLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(Configuration)\SDL2.lib;lua53.lib;opengl32.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(Configuration)\SDL2.lib;$(Configuration)\ChakraCore.lib;opengl32.lib</AdditionalDependencies>
       <SubSystem>
       </SubSystem>
     </Link>

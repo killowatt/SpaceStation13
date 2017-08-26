@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "targets\vs2017\se
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Renderer", "targets\vs2017\renderer.vcxproj", "{866E8DD7-B788-4DF9-8D40-987B364CC736}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Plasma", "targets\vs2017\plasma.vcxproj", "{EBBFAA8F-089B-4B43-93AF-D3EAD87D4A9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,10 @@ Global
 		{866E8DD7-B788-4DF9-8D40-987B364CC736}.Debug|x64.Build.0 = Debug|x64
 		{866E8DD7-B788-4DF9-8D40-987B364CC736}.Release|x64.ActiveCfg = Release|x64
 		{866E8DD7-B788-4DF9-8D40-987B364CC736}.Release|x64.Build.0 = Release|x64
+		{EBBFAA8F-089B-4B43-93AF-D3EAD87D4A9B}.Debug|x64.ActiveCfg = Debug|x64
+		{EBBFAA8F-089B-4B43-93AF-D3EAD87D4A9B}.Debug|x64.Build.0 = Debug|x64
+		{EBBFAA8F-089B-4B43-93AF-D3EAD87D4A9B}.Release|x64.ActiveCfg = Release|x64
+		{EBBFAA8F-089B-4B43-93AF-D3EAD87D4A9B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

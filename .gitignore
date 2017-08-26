@@ -2,6 +2,7 @@
 
 # Build Files
 binaries/
+dependencies/
 temp/
 
 # Game Content
