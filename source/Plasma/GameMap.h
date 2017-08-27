@@ -1,5 +1,5 @@
 #pragma once
-#include "Engine.h"
+#include "Core.h"
 #include "Tile.h"
 #include <string>
 
@@ -12,6 +12,8 @@ private:
 
 public:
 	void SaveFile() { };
+
+	GameMap(uint32 width, uint32 height);
 
 	GameMap(const std::string& filename);
 };

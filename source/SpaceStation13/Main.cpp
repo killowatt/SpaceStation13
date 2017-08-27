@@ -84,7 +84,7 @@ int main()
 	JsValueRef result;
 	unsigned currentSourceContext = 0;
 
-	const char* script = "(()=>{return \'HEY BUD\';})()";
+	const char* script = "(()=>{return \'SPACE STATION 13 INTERFACE\';})()";
 	size_t length = strlen(script);
 
 	// Create a runtime.
@@ -120,14 +120,14 @@ int main()
 
 	printf("Result -> %s \n", resultSTR);
 	free(resultSTR);
-
+ 
 	// Dispose runtime
 	JsSetCurrentContext(JS_INVALID_REFERENCE);
 	JsDisposeRuntime(runtime);
 
-	return 0;
+	//return 0;
 
-	return 1;
+	//return 1;
 
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
 		SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
