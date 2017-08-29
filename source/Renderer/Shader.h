@@ -30,14 +30,13 @@ protected:
 
 	ShaderState State;
 
-	glm::mat4 Model;
-	glm::mat4 View;
-	glm::mat4 Projection;
+	//void SetUniform(const char* name, uint32 texture);
 
 	std::string LoadFile(const char* fileName);
 
 public:
 	virtual void Initialize();
+	void UploadTransform(const glm::mat4& transform);
 
 	ShaderState GetShaderState() { return State; }
 	bool GetCompileResult(ShaderType type);

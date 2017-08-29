@@ -11,6 +11,9 @@ private:
 	uint32 Height;
 
 public:
+	uint32 GetWidth() const { return Width; }
+	uint32 GetHeight() const { return Height; }
+
 	void SaveFile() { };
 
 	GameMap(uint32 width, uint32 height);

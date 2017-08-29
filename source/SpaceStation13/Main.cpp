@@ -25,6 +25,7 @@
 
 
 #include "JSRT/ChakraCore.h"
+#include <vector>
 
 
 #define FAIL_CHECK(cmd)                     \
@@ -51,14 +52,37 @@ Sprite* spri;
 
 TestShader* shad;
 
-void render() {
+//std::vector<Sprite> mapz;
+bool initrm;
 
+
+float x;
+float y;
+float time;
+
+void render() {
+	if (!initrm)
+	{
+		//mapz = std::vector<Sprite>(4 * 4, Sprite(renderer, textur));
+
+
+
+		initrm = true;
+	}
 		//First clear the renderer
+
+	//std::cout << "ERROR --> " << glGetError() << "\n";
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
+		time += 0.05f;
+		x = glm::cos(time);
+		y = glm::sin(time);
+		//spri->Transform = glm::translate(glm::mat4(1.0f), glm::vec3(100, 100, 0))
+		//	* glm::scale(glm::mat4(1.0f), glm::vec3(50, 50, 0));
 
+		spri->SetPosition(glm::vec2(x * 15 + 100, y * 15 + 100));
 
 		renderer->Render(spri);
 
@@ -141,22 +165,28 @@ int main()
 	renderer->Initialize();
 
 	textur = renderer->CreateTexture();
+	textur->LoadFromFile("test.png");
 
 	spri = new Sprite(renderer, textur);
 
 	shad = new TestShader(renderer);
-
-
+	shad->Texture = textur;
 	shad->Initialize();
 
 
-	if (!shad->GetCompileResult(ShaderType::Pixel) ||
-		!shad->GetCompileResult(ShaderType::Vertex))
-		return 1; // TODO:
+	if (!shad->GetCompileResult(ShaderType::Pixel))
+		int iiiii = 0;
 
+	std::cout << "PIXEL --> " << shad->GetCompileLog(ShaderType::Pixel) << "\n";
+
+	if (!shad->GetCompileResult(ShaderType::Vertex))
+		int iiiiii = 1;
+
+	std::cout << "VERTEX --> " << shad->GetCompileLog(ShaderType::Vertex) << "\n";
 
 	renderer->SetShader(shad);
 
+	std::cout << "ERROR --> " << glGetError() << "\n";
 
 	while (!quitting) {
 

@@ -33,7 +33,7 @@ void RendererGL::Render(Sprite* sprite)
 	if (!CurrentShader)
 		return; // TODO: guess what
 
-	glUseProgram(CurrentShader->GetProgram());
+	CurrentShader->UploadTransform(sprite->Transform);
 	if (CurrentShader->GetShaderState() == ShaderState::Dynamic)
 		CurrentShader->Update();
 
@@ -44,7 +44,7 @@ void RendererGL::Render(Sprite* sprite)
 void RendererGL::Initialize()
 {
 	Window = SDL_CreateWindow("Space Station 13", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		512, 512, SDL_WINDOW_OPENGL);
+		768, 768, SDL_WINDOW_OPENGL);
 	if (Window == nullptr)
 		return; // TODO: error
 

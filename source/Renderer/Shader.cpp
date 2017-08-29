@@ -12,6 +12,30 @@ void Shader::Initialize()
 	// TODO: renderer check call here maybe?
 	glUseProgram(ShaderProgram);
 }
+void Shader::UploadTransform(const glm::mat4& transform)
+{
+	glUseProgram(ShaderProgram);
+	int32 location = glGetUniformLocation(ShaderProgram, "Model");
+	if (location > -1)
+		glUniformMatrix4fv(location, 1, false, &transform[0][0]);
+
+
+	int32 x = glGetUniformLocation(ShaderProgram, "View");
+	int32 y = glGetUniformLocation(ShaderProgram, "Projection");
+
+	glm::mat4 xx = glm::translate(glm::mat4(1.0f), glm::vec3(0.0, 0.0, 0.0));
+	xx = glm::mat4(1.0f);
+	glm::mat4 yy = glm::ortho(0.0f, 512.0f, 512.0f, 0.0f, 0.0f, 1.0f);
+
+	glUniformMatrix4fv(x, 1, false, &xx[0][0]);
+	glUniformMatrix4fv(y, 1, false, &yy[0][0]);
+}
+
+//void Shader::SetUniform(const char* name, uint32 texture)
+//{
+//	uint32 location = glGetUniformLocation(ShaderProgram, name);
+//	glUniform1i(location, texture);
+//}
 
 bool Shader::GetCompileResult(ShaderType type)
 {

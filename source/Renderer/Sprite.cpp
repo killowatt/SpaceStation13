@@ -3,19 +3,25 @@
 
 static const float VertexData[] = 
 {
-	-0.5f, -0.5f,
-	-0.5f, 0.5f,
-	0.5f, 0.5f,
-	0.5f, -0.5f
-};
-static const float TexCoordData[] =
-{
 	0, 0,
 	1, 0,
 	1, 1,
 	0, 1
 };
+static const float TexCoordData[] =
+{
+	0, 1,
+	1, 1,
+	1, 0,
+	0, 0
+};
 const uint32 BUFFER_SIZE = sizeof(VertexData) / sizeof(VertexData[0]);
+
+void Sprite::SetPosition(glm::ivec2 position)
+{
+	Transform = glm::translate(glm::mat4(1.0f), glm::vec3(position.x, position.y, 0)) *
+		glm::scale(glm::mat4(1.0f), glm::vec3(Image->GetWidth(), Image->GetHeight(), 0));
+}
 
 uint32 Sprite::GetBufferSize() { return BUFFER_SIZE; }
 
@@ -38,7 +44,7 @@ Sprite::Sprite(RendererGL* renderer, Texture* texture)
 
 	const uint32 texCoordIndex = 1;
 	glBindBuffer(GL_ARRAY_BUFFER, TexCoordBuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(TexCoordBuffer), TexCoordData, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(TexCoordData), TexCoordData, GL_STATIC_DRAW);
 	glVertexAttribPointer(texCoordIndex, 2, GL_FLOAT, false, 0, 0);
 	glEnableVertexAttribArray(texCoordIndex);
 

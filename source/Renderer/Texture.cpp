@@ -5,18 +5,17 @@
 void Texture::LoadFromFile(const char* fileName)
 {
 	std::vector<uint8> image;
-	uint32 width = 0, height = 0;
 
-	lodepng::decode(image, width, height, fileName);
+	lodepng::decode(image, Width, Height, fileName);
 
 	glBindTexture(GL_TEXTURE_2D, TextureID);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE,
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, Width, Height, 0, GL_RGBA, GL_UNSIGNED_BYTE,
 		image.data());
 }
 
 Texture::Texture(RendererGL* renderer)
 {
-	Renderer = renderer;
+	Renderer = renderer; // TODO: set default widht and height for emptytexture
 
 	if (!Renderer)
 		return; // TODO: error
