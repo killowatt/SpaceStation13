@@ -6,4 +6,10 @@ enum class Replication // for net
 	ServerOnly,
 	ClientServer
 };
+class Entity
+{
+	void Update();
+
+	Entity();
+};
 

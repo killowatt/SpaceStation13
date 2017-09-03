@@ -1,6 +1,3 @@
-//SDL2 flashing random color example
-//Should work on iOS/Android/Mac/Windows/Linux
-
 #include "SDL/SDL.h"
 #include "SDL/SDL_opengl.h"
 

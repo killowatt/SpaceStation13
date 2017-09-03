@@ -1,8 +1,7 @@
 #pragma once
-#include "Core.h"
 #include <string>
 
-class Tile : NonCopyable
+class Tile
 {
 private:
 	std::string SpriteName; // /?
