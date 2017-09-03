@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <string.h>
 
-
+#include "Engine.h"
 
 #include <iostream>
 #include <fstream> 
@@ -113,7 +113,10 @@ std::string xLoadFile(const char* fileName) // TODO:  redo this garbage
 
 int main()
 {
+	Engine engine;
+	engine.Initialize();
 
+	return 0;
 	//JsRuntimeHandle runtime;
 	//JsContextRef context;
 	//JsValueRef result;
