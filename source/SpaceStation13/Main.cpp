@@ -25,10 +25,9 @@
 
 #include "MapRenderer.h"
 
-#include "JSRT/ChakraCore.h"
 #include <vector>
 
-
+// dont worry we just said fuck it to js LUL 
 #define FAIL_CHECK(cmd)                     \
     do                                      \
     {                                       \

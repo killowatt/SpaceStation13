@@ -87,7 +87,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(Configuration)\SDL2.lib;$(Configuration)\ChakraCore.lib;opengl32.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(Configuration)\SDL2.lib;lua53.lib;opengl32.lib</AdditionalDependencies>
       <SubSystem>
       </SubSystem>
     </Link>
