@@ -6,6 +6,9 @@ void MapRenderer::TestRender()
 	{
 		for (int y = 0; y < Map->GetHeight(); y++)
 		{
+			uint32 index = Map->GetWidth() * y + x;
+			Sprites[index]->SetPosition(glm::ivec2(x * 64, y * 64));
+			Renderer->Render(Sprites[index]);
 		}
 	}
 }
@@ -15,6 +18,8 @@ MapRenderer::MapRenderer(const GameMap& gameMap, RendererGL* renderer) // TODO: 
 	Renderer = renderer;
 	Map = &gameMap;
 
-	//Sprites = std::vector<Sprite>(gameMap.GetWidth() * gameMap.GetHeight(),
-	//	Sprite(renderer, new Texture(renderer)));
+	Texture* tex = Renderer->CreateTexture();
+	tex->LoadFromFile("test.png");
+	Sprites = std::vector<Sprite*>(gameMap.GetWidth() * gameMap.GetHeight(),
+		new Sprite(renderer, tex));
 }

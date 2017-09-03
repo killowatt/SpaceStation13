@@ -9,7 +9,7 @@ class MapRenderer : NonCopyable
 	RendererGL* Renderer;
 
 	const GameMap* Map;
-	//std::vector<Sprite> Sprites;
+	std::vector<Sprite*> Sprites;
 
 public:
 	void TestRender();

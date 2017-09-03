@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\source\Renderer\Camera.h" />
     <ClInclude Include="..\..\source\Renderer\lodepng.h" />
     <ClInclude Include="..\..\source\Renderer\RendererGL.h" />
     <ClInclude Include="..\..\source\Renderer\Shader.h" />
@@ -18,6 +19,7 @@
     <ClInclude Include="..\..\source\Renderer\Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\source\Renderer\Camera.cpp" />
     <ClCompile Include="..\..\source\Renderer\lodepng.cpp" />
     <ClCompile Include="..\..\source\Renderer\RendererGL.cpp" />
     <ClCompile Include="..\..\source\Renderer\Shader.cpp" />

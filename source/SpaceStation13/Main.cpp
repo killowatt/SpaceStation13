@@ -23,6 +23,7 @@
 #include "Texture.h"
 #include "TestShader.h"
 
+#include "MapRenderer.h"
 
 #include "JSRT/ChakraCore.h"
 #include <vector>
@@ -52,6 +53,11 @@ Sprite* spri;
 
 TestShader* shad;
 
+Camera cam(512, 512);
+
+MapRenderer* mrenda;
+GameMap xyhz(8, 8);
+
 //std::vector<Sprite> mapz;
 bool initrm;
 
@@ -66,6 +72,7 @@ void render() {
 		//mapz = std::vector<Sprite>(4 * 4, Sprite(renderer, textur));
 
 
+		mrenda = new MapRenderer(xyhz, renderer);
 
 		initrm = true;
 	}
@@ -82,10 +89,14 @@ void render() {
 		//spri->Transform = glm::translate(glm::mat4(1.0f), glm::vec3(100, 100, 0))
 		//	* glm::scale(glm::mat4(1.0f), glm::vec3(50, 50, 0));
 
+		cam.SetPosition(x * 32, y * 16);
 		spri->SetPosition(glm::vec2(x * 15 + 100, y * 15 + 100));
 
 		renderer->Render(spri);
 
+		mrenda->TestRender();
+
+		std::cout << "ERROR --> " << glGetError() << "\n";
 
 		renderer->SwapBuffers();
 } //render
@@ -100,56 +111,97 @@ int SDLCALL watch(void *userdata, SDL_Event* event) {
 	return 1;
 }
 
+
+// copied from shader LUL
+std::string xLoadFile(const char* fileName) // TODO:  redo this garbage
+{
+	std::string file;
+	std::ifstream fileStream(fileName, std::ios::in);
+	if (fileStream.is_open())
+	{
+		std::string line = "";
+		while (getline(fileStream, line))
+			file += "\n" + line;
+		fileStream.close();
+		return file;
+	}
+	throw std::exception("stop");
+}
+
 int main()
 {
 
-	JsRuntimeHandle runtime;
-	JsContextRef context;
-	JsValueRef result;
-	unsigned currentSourceContext = 0;
+	//JsRuntimeHandle runtime;
+	//JsContextRef context;
+	//JsValueRef result;
+	//unsigned currentSourceContext = 0;
 
-	const char* script = "(()=>{return \'SPACE STATION 13 INTERFACE\';})()";
-	size_t length = strlen(script);
+	//std::string scrx = xLoadFile("test.js");
+	////const char* script = xLoadFile
+	//size_t length = strlen(scrx.c_str()); // ha
 
-	// Create a runtime.
-	JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &runtime);
+	//// Create a runtime.
+	//JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &runtime);
 
-	// Create an execution context.
-	JsCreateContext(runtime, &context);
+	//// Create an execution context.
+	//JsCreateContext(runtime, &context);
 
-	// Now set the current execution context.
-	JsSetCurrentContext(context);
+	//// Now set the current execution context.
+	//JsSetCurrentContext(context);
 
-	JsValueRef fname;
-	FAIL_CHECK(JsCreateString("sample", strlen("sample"), &fname));
+	//JsValueRef fname;
+	//FAIL_CHECK(JsCreateString("sample", strlen("sample"), &fname));
 
-	JsValueRef scriptSource;
-	FAIL_CHECK(JsCreateString(script, length, &scriptSource));
+	//JsValueRef scriptSource;
+	//FAIL_CHECK(JsCreateString(scrx.c_str(), length, &scriptSource));
 
-	// Run the script.
-	FAIL_CHECK(JsRun(scriptSource, currentSourceContext++, fname,
-		JsParseScriptAttributeNone, &result));
+	//// Run the script.
+	//FAIL_CHECK(JsRun(scriptSource, currentSourceContext++, fname,
+	//	JsParseScriptAttributeNone, &result));
 
-	// Convert your script result to String in JavaScript; redundant if your script returns a String
-	JsValueRef resultJSString;
-	FAIL_CHECK(JsConvertValueToString(result, &resultJSString));
+	//// Convert your script result to String in JavaScript; redundant if your script returns a String
+	//JsValueRef resultJSString;
+	//FAIL_CHECK(JsConvertValueToString(result, &resultJSString));
 
-	// Project script result back to C++.
-	char *resultSTR = nullptr;
-	size_t stringLength;
-	FAIL_CHECK(JsCopyString(resultJSString, nullptr, 0, 0, &stringLength));
-	resultSTR = (char*)malloc(stringLength + 1);
-	FAIL_CHECK(JsCopyString(resultJSString, resultSTR, stringLength + 1, 0, nullptr));
-	resultSTR[stringLength] = 0;
+	//// Project script result back to C++.
+	//// we deleted it 
 
-	printf("Result -> %s \n", resultSTR);
-	free(resultSTR);
- 
-	// Dispose runtime
-	JsSetCurrentContext(JS_INVALID_REFERENCE);
-	JsDisposeRuntime(runtime);
+	//// AAAAAAAAAAAAAA
+	//JsValueRef tile;
+	//JsCreateObject(&tile);
+	//
 
-	//return 0;
+	//JsValueRef output;
+	//JsPropertyIdRef propertyID;
+	//JsGetPropertyIdFromName(L"Name", &propertyID);
+	//JsGetProperty(fname, propertyID, &output);
+
+	////JsValueRef testxxxx = output;
+	////JsConvertValueToString(output, &testxxxx);//conv 2 string
+	//JsValueRef glob;
+	//JsGetGlobalObject(&glob);
+	//
+	//JsCallFun
+	//
+
+	//char *resultSTRx = nullptr;
+	//size_t stringLengthx;
+	//FAIL_CHECK(JsCopyString(glob, nullptr, 0, 0, &stringLengthx));
+	//resultSTRx = (char*)malloc(stringLengthx + 1);
+	//FAIL_CHECK(JsCopyString(glob, resultSTRx, stringLengthx + 1, 0, nullptr));
+	//resultSTRx[stringLengthx] = 0;
+
+	//std::cout << "value of test string was " << resultSTRx << "\n";
+
+	//// AAAAAAAAAA
+
+
+
+	//// Dispose runtime
+	//JsSetCurrentContext(JS_INVALID_REFERENCE);
+	//JsDisposeRuntime(runtime);
+
+	////return 0;
 
 	//return 1;
 
@@ -163,6 +215,9 @@ int main()
 
 	renderer = new RendererGL();
 	renderer->Initialize();
+
+	cam = Camera(512, 512);
+	renderer->SetCamera(&cam);
 
 	textur = renderer->CreateTexture();
 	textur->LoadFromFile("test.png");

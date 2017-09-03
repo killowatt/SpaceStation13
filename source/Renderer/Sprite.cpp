@@ -10,10 +10,10 @@ static const float VertexData[] =
 };
 static const float TexCoordData[] =
 {
-	0, 1,
-	1, 1,
+	0, 0,
 	1, 0,
-	0, 0
+	1, 1,
+	0, 1
 };
 const uint32 BUFFER_SIZE = sizeof(VertexData) / sizeof(VertexData[0]);
 

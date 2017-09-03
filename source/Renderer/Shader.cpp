@@ -27,6 +27,9 @@ void Shader::UploadTransform(const glm::mat4& transform)
 	xx = glm::mat4(1.0f);
 	glm::mat4 yy = glm::ortho(0.0f, 512.0f, 512.0f, 0.0f, 0.0f, 1.0f);
 
+	xx = Renderer->GetCamera().GetView();
+	yy = Renderer->GetCamera().GetProjection();
+
 	glUniformMatrix4fv(x, 1, false, &xx[0][0]);
 	glUniformMatrix4fv(y, 1, false, &yy[0][0]);
 }

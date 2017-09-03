@@ -1,9 +1,12 @@
 #pragma once
+#include <memory>
 
 typedef signed int int32;
 typedef unsigned int uint32;
 
 typedef unsigned char uint8;
+
+//typedef std::unique_ptr<int> Resource;
 
 struct NonCopyable
 {
