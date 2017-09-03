@@ -12,11 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Plasma\Core.h" />
+    <ClInclude Include="..\..\source\Plasma\Entity.h" />
     <ClInclude Include="..\..\source\Plasma\GameMap.h" />
     <ClInclude Include="..\..\source\Plasma\Tile.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Plasma\Core.cpp" />
+    <ClCompile Include="..\..\source\Plasma\Entity.cpp" />
     <ClCompile Include="..\..\source\Plasma\GameMap.cpp" />
     <ClCompile Include="..\..\source\Plasma\Tile.cpp" />
   </ItemGroup>

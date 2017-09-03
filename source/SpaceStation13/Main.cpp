@@ -27,19 +27,6 @@
 
 #include <vector>
 
-// dont worry we just said fuck it to js LUL 
-#define FAIL_CHECK(cmd)                     \
-    do                                      \
-    {                                       \
-        JsErrorCode errCode = cmd;          \
-        if (errCode != JsNoError)           \
-        {                                   \
-            printf("Error %d at '%s'\n",    \
-                errCode, #cmd);             \
-            return 1;                       \
-        }                                   \
-    } while(0)
-
 using namespace std;
 
 static bool quitting = false;
