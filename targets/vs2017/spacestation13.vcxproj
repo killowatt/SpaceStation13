@@ -14,6 +14,7 @@
     <ClCompile Include="..\..\source\SpaceStation13\Engine.cpp" />
     <ClCompile Include="..\..\source\SpaceStation13\Main.cpp" />
     <ClCompile Include="..\..\source\SpaceStation13\MapRenderer.cpp" />
+    <ClCompile Include="..\..\source\SpaceStation13\Script.cpp" />
     <ClCompile Include="..\..\source\SpaceStation13\ScriptManager.cpp" />
     <ClCompile Include="..\..\source\SpaceStation13\TestShader.cpp" />
   </ItemGroup>
@@ -21,6 +22,7 @@
     <ClInclude Include="..\..\source\SpaceStation13\Engine.h" />
     <ClInclude Include="..\..\source\SpaceStation13\Entity.h" />
     <ClInclude Include="..\..\source\SpaceStation13\MapRenderer.h" />
+    <ClInclude Include="..\..\source\SpaceStation13\Script.h" />
     <ClInclude Include="..\..\source\SpaceStation13\ScriptManager.h" />
     <ClInclude Include="..\..\source\SpaceStation13\TestShader.h" />
     <ClInclude Include="..\..\source\SpaceStation13\Tile.h" />
