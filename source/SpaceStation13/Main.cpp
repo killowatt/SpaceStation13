@@ -20,6 +20,8 @@
 #include "Texture.h"
 #include "TestShader.h"
 
+#include "Server.h"
+
 #include "MapRenderer.h"
 
 #include <vector>
@@ -36,7 +38,7 @@ Sprite* spri;
 
 TestShader* shad;
 
-Camera cam(512, 512);
+Camera cam(768, 768);
 
 MapRenderer* mrenda;
 GameMap xyhz(8, 8);
@@ -72,7 +74,9 @@ void render() {
 		//spri->Transform = glm::translate(glm::mat4(1.0f), glm::vec3(100, 100, 0))
 		//	* glm::scale(glm::mat4(1.0f), glm::vec3(50, 50, 0));
 
-		cam.SetPosition(x * 32, y * 16);
+		cam.SetPosition((int)(x * 32), (int)(y * 16));
+		cam.SetPosition(64, 64);
+
 		spri->SetPosition(glm::vec2(x * 15 + 100, y * 15 + 100));
 
 		renderer->Render(spri);
@@ -113,10 +117,33 @@ std::string xLoadFile(const char* fileName) // TODO:  redo this garbage
 
 int main()
 {
+
+	Server server;
+	TestClient testClient;
+
+	std::cout << "input 1 for serv, input 2 for client \n";
+	int input = std::getchar();
+
+	if (input == '1')
+	{
+		std::cout << "Serv select\n";
+		server.Test();
+	}
+	else if (input == '2')
+	{
+		std::cout << "Client select\n";
+		testClient.Connect();
+	}
+	else
+	{
+		std::cout << "Neither select !!";
+		return 0;
+	}
+
 	Engine engine;
 	engine.Initialize();
 
-	return 0;
+	//return 0;
 	//JsRuntimeHandle runtime;
 	//JsContextRef context;
 	//JsValueRef result;

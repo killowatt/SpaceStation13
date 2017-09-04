@@ -14,10 +14,12 @@ void Shader::Initialize()
 }
 void Shader::UploadTransform(const glm::mat4& transform)
 {
+	glm::mat4 scaley = glm::scale(glm::mat4(1.0f), glm::vec3(2, 2, 0)) * transform;
+
 	glUseProgram(ShaderProgram);
 	int32 location = glGetUniformLocation(ShaderProgram, "Model");
 	if (location > -1)
-		glUniformMatrix4fv(location, 1, false, &transform[0][0]);
+		glUniformMatrix4fv(location, 1, false, &scaley[0][0]);
 
 
 	int32 x = glGetUniformLocation(ShaderProgram, "View");

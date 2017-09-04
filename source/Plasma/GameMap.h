@@ -10,11 +10,14 @@ private:
 	uint32 Width;
 	uint32 Height;
 
+	uint32 IndexFromVector2D(uint32 x, uint32 y) { return Width * y + x; }
 public:
+	void SaveFile() { };
+
+	Tile& GetTile(uint32 x, uint32 y) { return TileData[IndexFromVector2D(x, y)]; }
+
 	uint32 GetWidth() const { return Width; }
 	uint32 GetHeight() const { return Height; }
-
-	void SaveFile() { };
 
 	GameMap(uint32 width, uint32 height);
 
