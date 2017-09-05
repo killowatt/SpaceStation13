@@ -2,6 +2,7 @@
 #include <enet/enet.h>
 
 #include <iostream>
+#include "Network/Packet.h"
 
 class Server
 {
@@ -22,6 +23,11 @@ class TestClient
 public:
 	void Connect()
 	{
+		if (enet_initialize() != 0)
+		{
+			return;
+		}
+
 		Client = enet_host_create(nullptr, 1, 2, 0, 0);
 
 		if (!Client)
@@ -41,6 +47,12 @@ public:
 			event.type == ENET_EVENT_TYPE_CONNECT)
 		{
 			std::cout << "[CLIENT] Success connect";
+
+			ENetPacket* packet = enet_packet_create("Hello", strlen("Hello") + 1,
+				ENET_PACKET_FLAG_RELIABLE);
+
+			enet_peer_send(Serv, 0, packet);
+			enet_host_flush(Client);
 		}
 		else
 		{

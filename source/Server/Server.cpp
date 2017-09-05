@@ -28,6 +28,8 @@ void Server::Test()
 		case ENET_EVENT_TYPE_RECEIVE:
 			ProcessRecvEvent(event);
 
+			std::cout << event.packet->data << std::endl;
+
 			enet_packet_destroy(event.packet);
 			break;
 		case ENET_EVENT_TYPE_DISCONNECT:

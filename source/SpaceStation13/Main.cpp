@@ -118,27 +118,27 @@ std::string xLoadFile(const char* fileName) // TODO:  redo this garbage
 int main()
 {
 
-	Server server;
-	TestClient testClient;
+	//Server server;
+	//TestClient testClient;
 
-	std::cout << "input 1 for serv, input 2 for client \n";
-	int input = std::getchar();
+	//std::cout << "input 1 for serv, input 2 for client \n";
+	//int input = std::getchar();
 
-	if (input == '1')
-	{
-		std::cout << "Serv select\n";
-		server.Test();
-	}
-	else if (input == '2')
-	{
-		std::cout << "Client select\n";
-		testClient.Connect();
-	}
-	else
-	{
-		std::cout << "Neither select !!";
-		return 0;
-	}
+	//if (input == '1')
+	//{
+	//	std::cout << "Serv select\n";
+	//	server.Test();
+	//}
+	//else if (input == '2')
+	//{
+	//	std::cout << "Client select\n";
+	//	testClient.Connect();
+	//}
+	//else
+	//{
+	//	std::cout << "Neither select !!";
+	//	return 0;
+	//}
 
 	Engine engine;
 	engine.Initialize();
