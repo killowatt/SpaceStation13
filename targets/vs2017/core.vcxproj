@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\source\Core\ByteStream.cpp" />
     <ClCompile Include="..\..\source\Core\Core.cpp" />
     <ClCompile Include="..\..\source\Core\Entity.cpp" />
     <ClCompile Include="..\..\source\Core\GameMap.cpp" />
@@ -20,9 +21,12 @@
     <ClCompile Include="..\..\source\Core\Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\source\Core\ByteStream.h" />
     <ClInclude Include="..\..\source\Core\Core.h" />
     <ClInclude Include="..\..\source\Core\Entity.h" />
     <ClInclude Include="..\..\source\Core\GameMap.h" />
+    <ClInclude Include="..\..\source\Core\Network\Packet.h" />
+    <ClInclude Include="..\..\source\Core\Network\VersionPacket.h" />
     <ClInclude Include="..\..\source\Core\PlayerController.h" />
     <ClInclude Include="..\..\source\Core\Script.h" />
     <ClInclude Include="..\..\source\Core\ScriptManager.h" />
@@ -76,7 +80,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Core</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
@@ -96,7 +100,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Core</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

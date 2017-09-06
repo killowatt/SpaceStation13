@@ -5,13 +5,5 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Server\Server.h" />
-    <ClInclude Include="..\..\source\Server\Network\Packet.h">
-      <Filter>Network</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Network">
-      <UniqueIdentifier>{1cbf6380-caa1-4c11-9c03-11e2d7ca48fb}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>
