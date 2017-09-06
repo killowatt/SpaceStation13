@@ -11,45 +11,39 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\source\SpaceStation13\Client.cpp" />
-    <ClCompile Include="..\..\source\SpaceStation13\Engine.cpp" />
-    <ClCompile Include="..\..\source\SpaceStation13\Main.cpp" />
-    <ClCompile Include="..\..\source\SpaceStation13\MapRenderer.cpp" />
-    <ClCompile Include="..\..\source\SpaceStation13\TestShader.cpp" />
+    <ClCompile Include="..\..\source\Core\Core.cpp" />
+    <ClCompile Include="..\..\source\Core\Entity.cpp" />
+    <ClCompile Include="..\..\source\Core\GameMap.cpp" />
+    <ClCompile Include="..\..\source\Core\PlayerController.cpp" />
+    <ClCompile Include="..\..\source\Core\Script.cpp" />
+    <ClCompile Include="..\..\source\Core\ScriptManager.cpp" />
+    <ClCompile Include="..\..\source\Core\Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\source\SpaceStation13\Client.h" />
-    <ClInclude Include="..\..\source\SpaceStation13\Engine.h" />
-    <ClInclude Include="..\..\source\SpaceStation13\MapRenderer.h" />
-    <ClInclude Include="..\..\source\SpaceStation13\TestShader.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="plasma.vcxproj">
-      <Project>{ebbfaa8f-089b-4b43-93af-d3ead87d4a9b}</Project>
-    </ProjectReference>
-    <ProjectReference Include="renderer.vcxproj">
-      <Project>{866e8dd7-b788-4df9-8d40-987b364cc736}</Project>
-    </ProjectReference>
-    <ProjectReference Include="server.vcxproj">
-      <Project>{6ac28548-cb08-47b2-a1ca-03d840001361}</Project>
-    </ProjectReference>
+    <ClInclude Include="..\..\source\Core\Core.h" />
+    <ClInclude Include="..\..\source\Core\Entity.h" />
+    <ClInclude Include="..\..\source\Core\GameMap.h" />
+    <ClInclude Include="..\..\source\Core\PlayerController.h" />
+    <ClInclude Include="..\..\source\Core\Script.h" />
+    <ClInclude Include="..\..\source\Core\ScriptManager.h" />
+    <ClInclude Include="..\..\source\Core\Tile.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{B242B230-F4AF-41EA-A618-8E1ED84D07E1}</ProjectGuid>
-    <RootNamespace>spacestation13</RootNamespace>
+    <ProjectGuid>{250E5B04-F7FE-4873-B2B4-0A93421C51BB}</ProjectGuid>
+    <RootNamespace>core</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
-    <ProjectName>SpaceStation13</ProjectName>
+    <ProjectName>Core</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -82,18 +76,18 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Plasma;$(SolutionDir)source\Renderer;$(SolutionDir)source\Server</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>SDL_MAIN_HANDLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(Configuration)\SDL2.lib;$(Configuration)\enet.lib;lua53.lib;opengl32.lib</AdditionalDependencies>
-      <SubSystem>
-      </SubSystem>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /d /y "$(SolutionDir)dependencies\$(Configuration)\*.dll" "$(OutDir)"</Command>
-    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>lua53.lib</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -102,20 +96,20 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Plasma;$(SolutionDir)source\Renderer;$(SolutionDir)source\Server</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>SDL_MAIN_HANDLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(Configuration)\SDL2.lib;$(Configuration)\enet.lib;$(Configuration)\ChakraCore.lib;opengl32.lib</AdditionalDependencies>
-      <SubSystem>
-      </SubSystem>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /d /y "$(SolutionDir)dependencies\$(Configuration)\*.dll" "$(OutDir)"</Command>
-    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>lua53.lib</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

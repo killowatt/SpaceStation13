@@ -2,5 +2,5 @@
 
 void ScriptManager::Initialize()
 {
-	luaState = luaL_newstate();
+
 }

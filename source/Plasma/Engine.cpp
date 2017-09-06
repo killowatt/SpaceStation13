@@ -7,8 +7,9 @@
 void Engine::Initialize()
 {
 	Script x("script.lua");
-
+	
 	std::cout << x.GetVariable<std::string>("tile.icon");
+
 
 	std::getchar();
 	// init all systems

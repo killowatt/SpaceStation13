@@ -27,8 +27,8 @@
     <ClCompile Include="..\..\source\Renderer\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="plasma.vcxproj">
-      <Project>{ebbfaa8f-089b-4b43-93af-d3ead87d4a9b}</Project>
+    <ProjectReference Include="core.vcxproj">
+      <Project>{250e5b04-f7fe-4873-b2b4-0a93421c51bb}</Project>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -79,7 +79,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Plasma</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Core</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -100,7 +100,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Plasma</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Core</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
