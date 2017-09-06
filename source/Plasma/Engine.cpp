@@ -17,11 +17,7 @@ void Engine::Initialize()
 	b.Write<uint8>(64);
 	b.Write<uint32>(500000);
 
-
-	std::string teststr = "Hello How are you!\0";
-	uint64 sz = teststr.size();
-	b.Write(&sz, sizeof(size_t));
-	b.Write(teststr.c_str(), teststr.size());
+	b.WriteString("WelcomeToSS13");
 
 	b.SetPosition(0);
 
@@ -30,11 +26,9 @@ void Engine::Initialize()
 	uint8 z = b.Read<uint8>();
 	uint32 a = b.Read<uint32>();
 
-	uint64 xyz = b.Read<uint64>();
-	char* strz = new char[xyz];       // HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEY
-	b.Read(strz, xyz);                // fix the trailing characters for strings,
-	                                // implement it into bytestream :)
-	std::cout << strz;
+	std::string xyyy = b.ReadString();
+
+	std::cout << xyyy;
 
 	Script x("script.lua");
 	

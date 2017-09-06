@@ -22,6 +22,21 @@ void ByteStream::Write(const void* data, uint32 bytes)
 	}
 }
 
+std::string ByteStream::ReadString()
+{
+	uint64 length = Read<uint64>();
+	if (length > Size - Position)
+		return "InvalidNetworkString"; // TODO: error
+	std::string String((char*)Stream + Position, length);
+	Position += (uint64)length;
+	return String;
+}
+void ByteStream::WriteString(const std::string& string)
+{
+	Write<uint64>(string.size());
+	Write(string.c_str(), string.size());
+}
+
 ByteStream::ByteStream(uint8* buffer, uint64 size)
 {
 	Stream = buffer;
