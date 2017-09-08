@@ -9,6 +9,9 @@
 void Engine::Initialize()
 {
 
+	LogPrint(LogCategory::Warning, "Engine", "Hello, world");
+	RuntimeError("Failure in init");
+
 	uint8* data = new uint8[555];
 	ByteStream b(data, 555);
 

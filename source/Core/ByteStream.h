@@ -10,14 +10,15 @@ private:
 	uint64 Position;
 
 public:
-	void Read(void* destination, uint32 bytes);
-	void Write(const void* data, uint32 bytes);
+	void Read(void* destination, uint64 bytes);
+	void Write(const void* data, uint64 bytes);
 
+	// TODO: Should we expose templates internally as a method for outward public methods
+	// such as readint or readbyte?
 	template<typename T>
-	T Read() { T result = 0; Read(&result, sizeof(T)); return result; } // VV
-
+	T Read() { T result = 0; Read(&result, sizeof(T)); return result; }
 	template<typename T>
-	void Write(T data) { Write(&data, sizeof(T)); } // WE DONT KNOW IF ANY OF THESE WORK
+	void Write(T data) { Write(&data, sizeof(T)); }
 
 	std::string ReadString();
 	void WriteString(const std::string& string);

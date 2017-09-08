@@ -1,16 +1,16 @@
 #include "ByteStream.h"
 
-void ByteStream::Read(void* destination, uint32 bytes)
+void ByteStream::Read(void* destination, uint64 bytes)
 {
 	if (Position >= Size)
 		return; // Error: end of stream
-	if ((uint64)bytes > Size - Position)
+	if (bytes > Size - Position)
 		return; // Error: overread!
 
-	memcpy(destination, Stream + (uint64)Position, bytes);
-	Position += (uint64)bytes;
+	memcpy(destination, Stream + Position, bytes);
+	Position += bytes;
 }
-void ByteStream::Write(const void* data, uint32 bytes)
+void ByteStream::Write(const void* data, uint64 bytes)
 {
 	if (Position + (uint64)bytes > Size ||
 		Position + (uint64)bytes < Position) // Integer overflow check, thanks openspades!
@@ -28,7 +28,7 @@ std::string ByteStream::ReadString()
 	if (length > Size - Position)
 		return "InvalidNetworkString"; // TODO: error
 	std::string String((char*)Stream + Position, length);
-	Position += (uint64)length;
+	Position += length;
 	return String;
 }
 void ByteStream::WriteString(const std::string& string)

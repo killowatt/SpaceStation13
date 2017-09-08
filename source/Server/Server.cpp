@@ -1,10 +1,23 @@
-//#include "Server.h"
-//
-//#include "Server.h"
-//
+#include "Server.h"
+
 int main()
 {
 	// insert dedicated server here
+}
+
+void Server::Initialize()
+{
+	if (enet_initialize() != 0)
+		return;
+
+	Address.host = ENET_HOST_ANY;
+	Address.port = 5513;
+
+	ServerHost = enet_host_create(&Address, 32, 2, 0, 0);
+	if (!ServerHost)
+		return;
+
+
 }
 //
 //void Server::Test()

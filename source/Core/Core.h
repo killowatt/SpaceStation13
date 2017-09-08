@@ -1,4 +1,6 @@
 #pragma once
+#include "Debug.h"
+#include "Log.h"
 #include <memory>
 
 typedef signed int int32;

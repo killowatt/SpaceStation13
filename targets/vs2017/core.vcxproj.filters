@@ -13,8 +13,26 @@
       <Filter>Network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Core\ByteStream.h" />
+    <ClInclude Include="..\..\source\Core\Core.h" />
+    <ClInclude Include="..\..\source\Core\Entity.h" />
+    <ClInclude Include="..\..\source\Core\GameMap.h" />
+    <ClInclude Include="..\..\source\Core\PlayerController.h" />
+    <ClInclude Include="..\..\source\Core\Script.h" />
+    <ClInclude Include="..\..\source\Core\ScriptManager.h" />
+    <ClInclude Include="..\..\source\Core\Tile.h" />
+    <ClInclude Include="..\..\source\Core\Log.h" />
+    <ClInclude Include="..\..\source\Core\Debug.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Core\ByteStream.cpp" />
+    <ClCompile Include="..\..\source\Core\Core.cpp" />
+    <ClCompile Include="..\..\source\Core\Entity.cpp" />
+    <ClCompile Include="..\..\source\Core\GameMap.cpp" />
+    <ClCompile Include="..\..\source\Core\PlayerController.cpp" />
+    <ClCompile Include="..\..\source\Core\Script.cpp" />
+    <ClCompile Include="..\..\source\Core\ScriptManager.cpp" />
+    <ClCompile Include="..\..\source\Core\Tile.cpp" />
+    <ClCompile Include="..\..\source\Core\Log.cpp" />
+    <ClCompile Include="..\..\source\Core\Debug.cpp" />
   </ItemGroup>
 </Project>
