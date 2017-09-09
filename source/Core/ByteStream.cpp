@@ -2,32 +2,27 @@
 
 void ByteStream::Read(void* destination, uint64 bytes)
 {
-	if (Position >= Size)
+	if (Position >= Stream.size())
 		return; // Error: end of stream
-	if (bytes > Size - Position)
+	if (bytes > Stream.size() - Position)
 		return; // Error: overread!
 
-	memcpy(destination, Stream + Position, bytes);
+	memcpy(destination, Stream.data() + Position, bytes); // monkaS
 	Position += bytes;
 }
 void ByteStream::Write(const void* data, uint64 bytes)
 {
-	if (Position + (uint64)bytes > Size ||
-		Position + (uint64)bytes < Position) // Integer overflow check, thanks openspades!
-		memcpy(nullptr, nullptr, 0); //ERR ! < this is just so we can breakpoint, not functional
-	else
-	{
-		memcpy(Stream + Position, data, bytes);
-		Position += (uint64)bytes;
-	}
+	Stream.resize(Stream.size() + bytes);
+	memcpy(Stream.data() + Position, data, bytes); // monkaS
+	Position += (uint64)bytes;
 }
 
 std::string ByteStream::ReadString()
 {
 	uint64 length = Read<uint64>();
-	if (length > Size - Position)
-		return "InvalidNetworkString"; // TODO: error
-	std::string String((char*)Stream + Position, length);
+	if (length > Stream.size() - Position)
+		return "InvalidString"; // TODO: error
+	std::string String((char*)Stream.data() + Position, length);
 	Position += length;
 	return String;
 }
@@ -37,10 +32,14 @@ void ByteStream::WriteString(const std::string& string)
 	Write(string.c_str(), string.size());
 }
 
-ByteStream::ByteStream(uint8* buffer, uint64 size)
+ByteStream::ByteStream()
 {
-	Stream = buffer;
-	Size = size;
-
 	Position = 0;
+}
+ByteStream::ByteStream(uint8* data, uint64 size)
+{
+	Position = 0;
+
+	this->Stream.resize(size);
+	memcpy(Stream.data(), data, size);
 }

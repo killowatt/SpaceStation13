@@ -2,6 +2,7 @@
 #include "Debug.h"
 #include "Log.h"
 #include <memory>
+#include <string>
 
 typedef signed int int32;
 typedef unsigned int uint32;

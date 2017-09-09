@@ -1,5 +1,9 @@
 #pragma once
 #include "Core.h"
+#include "Network/Network.h"
+#include "Network/NetPlayer.h"
+
+#include <vector>
 #include <enet/enet.h>
 
 class Server
@@ -8,10 +12,13 @@ class Server
 	ENetHost* ServerHost;
 
 public:
+	std::vector<NetPlayer> players;
+
 	void Update();
 	void Initialize();
 
 	Server() {}
+	~Server();
 };
 
 //#include <enet/enet.h>

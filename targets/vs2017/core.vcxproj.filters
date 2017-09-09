@@ -22,6 +22,12 @@
     <ClInclude Include="..\..\source\Core\Tile.h" />
     <ClInclude Include="..\..\source\Core\Log.h" />
     <ClInclude Include="..\..\source\Core\Debug.h" />
+    <ClInclude Include="..\..\source\Core\Network\Network.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Core\Network\NetPlayer.h">
+      <Filter>Network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Core\ByteStream.cpp" />

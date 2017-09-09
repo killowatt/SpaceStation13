@@ -1,20 +1,44 @@
 #include "Server.h"
+#include "Network/Network.h"
 
 int main()
 {
-	// insert dedicated server here
+	Log::Print(LogCategory::Info, "Test");
+	Server server;
+	server.Initialize();
 }
 
 void Server::Update()
 {
 	ENetEvent event;
-	while (enet_host_service(ServerHost, &event, 1000) > 0)
+	while (enet_host_service(ServerHost, &event, 0) > 0)
 	{
+		std::string clientAddress = GetAddressString(&event.peer->address);
 		switch (event.type)
 		{
+		case ENET_EVENT_TYPE_NONE:
+			break;
 		case ENET_EVENT_TYPE_CONNECT:
+			Log::Print(LogCategory::Info, "Client connected from %s:%d",
+				clientAddress.c_str(), event.peer->address.port);
 			break;
 		case ENET_EVENT_TYPE_DISCONNECT:
+			Log::Print(LogCategory::Info, "Client disconnected from %s:%d",
+				clientAddress.c_str(), event.peer->address.port);
+			break;
+		case ENET_EVENT_TYPE_RECEIVE:
+			ByteStream reader(event.packet->data, event.packet->dataLength);
+			PACKET_DT packetType = reader.Read<PACKET_DT>();
+
+			switch (packetType)
+			{
+			case PacketTypePlayerData:
+				PlayerData data = PlayerData::FromStream(reader);
+				Log::Print(LogCategory::Info, "Player Data received, name %s",
+					data.Name.c_str());
+				break;
+			}
+
 			break;
 		}
 	}
@@ -22,7 +46,7 @@ void Server::Update()
 void Server::Initialize()
 {
 	int result = enet_initialize();
-	AssertRT(!result, "Networking system failed to initialize. Code %d", result);
+	AssertRT(!result, "Networking system failed to initialize.");
 
 	Address.host = ENET_HOST_ANY;
 	Address.port = 5513;
@@ -36,6 +60,11 @@ void Server::Initialize()
 	{
 		Update();
 	}
+}
+
+Server::~Server()
+{
+	if (ServerHost) enet_host_destroy(ServerHost);
 }
 //
 //void Server::Test()

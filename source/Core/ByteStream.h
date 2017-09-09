@@ -1,12 +1,12 @@
 #pragma once
 #include "Core.h"
+#include <vector>
 #include <string>
 
 class ByteStream
 {
 private:
-	uint8* Stream;
-	uint64 Size;
+	std::vector<uint8> Stream;
 	uint64 Position;
 
 public:
@@ -22,13 +22,17 @@ public:
 
 	std::string ReadString();
 	void WriteString(const std::string& string);
+	
+	std::vector<uint8>& GetStream() { return Stream; }
+	const uint8* GetData() { return Stream.data(); }
+	uint64 GetSize() { return Stream.size(); }
 
 	void SetPosition(uint64 position) { Position = position; }
 	uint64 GetPosition() { return Position; }
 
-	ByteStream(uint8* buffer, uint64 size);
+	ByteStream();
+	ByteStream(uint8* data, uint64 size);
 
-	ByteStream& operator=(const ByteStream&) = delete; // Explicitness
-	ByteStream(const ByteStream&) = delete;
-	ByteStream() = delete;
+	//ByteStream& operator=(const ByteStream&) = delete; // Explicitness
+	//ByteStream(const ByteStream&) = delete;
 };

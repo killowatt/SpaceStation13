@@ -8,36 +8,50 @@
 
 #include "Client.h"
 
+#include "Network/NetPlayer.h"
+
 void Engine::Initialize()
 {
 	Client xyzzy;
+
+	std::cout << "Press enter to start\n";
+	std::getchar();
+
 	xyzzy.Initialize();
-	xyzzy.Connect("yourfriendscounterstrikeslashHL2dmserver.net", 5513);
+	xyzzy.Connect("localhost", 5513);
 
-	uint8* data = new uint8[555];
-	ByteStream b(data, 555);
+	PlayerData playerdata;
+	xyzzy.SendPacket(playerdata.ToStream());
 
-	b.Write<uint8>(16);
-	b.Write<uint8>(32);
-	b.Write<uint8>(64);
-	b.Write<uint32>(500000);
+	while (true)
+	{
+		xyzzy.Update();
+	}
 
-	b.WriteString("WelcomeToSS13");
+	//uint8* data = new uint8[555];
+	//ByteStream b(data, 555);
 
-	b.SetPosition(0);
+	//b.Write<uint8>(16);
+	//b.Write<uint8>(32);
+	//b.Write<uint8>(64);
+	//b.Write<uint32>(500000);
 
-	uint8 f = b.Read<uint8>();
-	uint8 y = b.Read<uint8>();
-	uint8 z = b.Read<uint8>();
-	uint32 a = b.Read<uint32>();
+	//b.WriteString("WelcomeToSS13");
 
-	std::string xyyy = b.ReadString();
+	//b.SetPosition(0);
 
-	std::cout << xyyy;
+	//uint8 f = b.Read<uint8>();
+	//uint8 y = b.Read<uint8>();
+	//uint8 z = b.Read<uint8>();
+	//uint32 a = b.Read<uint32>();
 
-	Script x("script.lua");
-	
-	std::cout << x.GetVariable<std::string>("tile.icon");
+	//std::string xyyy = b.ReadString();
+
+	//std::cout << xyyy;
+
+	//Script x("script.lua");
+	//
+	//std::cout << x.GetVariable<std::string>("tile.icon");
 
 
 	std::getchar();
