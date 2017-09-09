@@ -8,7 +8,11 @@ enum class LogCategory
 	Error,
 	Fatal
 };
-char* GetCategoryName(LogCategory category);
+namespace Log
+{
+	char* GetCategoryName(LogCategory category);
 
-void LogPrint(LogCategory category, const char* message);
-void LogPrint(LogCategory category, const char* system, const char* message);
+	//void Print(LogCategory category, const char* message);
+	void Print(LogCategory category, const char* format, ...);
+	//void Print(LogCategory category, const char* system, const char* message);
+}

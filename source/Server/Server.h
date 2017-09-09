@@ -1,4 +1,5 @@
 #pragma once
+#include "Core.h"
 #include <enet/enet.h>
 
 class Server
@@ -7,6 +8,7 @@ class Server
 	ENetHost* ServerHost;
 
 public:
+	void Update();
 	void Initialize();
 
 	Server() {}

@@ -6,11 +6,13 @@
 
 #include <iostream>
 
+#include "Client.h"
+
 void Engine::Initialize()
 {
-
-	LogPrint(LogCategory::Warning, "Engine", "Hello, world");
-	RuntimeError("Failure in init");
+	Client xyzzy;
+	xyzzy.Initialize();
+	xyzzy.Connect("yourfriendscounterstrikeslashHL2dmserver.net", 5513);
 
 	uint8* data = new uint8[555];
 	ByteStream b(data, 555);

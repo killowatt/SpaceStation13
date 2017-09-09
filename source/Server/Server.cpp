@@ -5,10 +5,24 @@ int main()
 	// insert dedicated server here
 }
 
+void Server::Update()
+{
+	ENetEvent event;
+	while (enet_host_service(ServerHost, &event, 1000) > 0)
+	{
+		switch (event.type)
+		{
+		case ENET_EVENT_TYPE_CONNECT:
+			break;
+		case ENET_EVENT_TYPE_DISCONNECT:
+			break;
+		}
+	}
+}
 void Server::Initialize()
 {
-	if (enet_initialize() != 0)
-		return;
+	int result = enet_initialize();
+	AssertRT(!result, "Networking system failed to initialize. Code %d", result);
 
 	Address.host = ENET_HOST_ANY;
 	Address.port = 5513;
@@ -17,7 +31,11 @@ void Server::Initialize()
 	if (!ServerHost)
 		return;
 
-
+	// Server Loop
+	while (true)
+	{
+		Update();
+	}
 }
 //
 //void Server::Test()
