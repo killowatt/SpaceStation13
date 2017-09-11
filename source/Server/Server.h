@@ -12,7 +12,9 @@ class Server
 	ENetHost* ServerHost;
 
 public:
-	std::vector<NetPlayer> players;
+	std::vector<NetPlayer> Players;
+
+	void SendPacket(const NetPlayer& player, ByteStream& stream);
 
 	void Update();
 	void Initialize();

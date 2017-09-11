@@ -29,6 +29,7 @@
     <ClInclude Include="..\..\source\Core\Entity.h" />
     <ClInclude Include="..\..\source\Core\Log.h" />
     <ClInclude Include="..\..\source\Core\GameMap.h" />
+    <ClInclude Include="..\..\source\Core\Network\MapDataPacket.h" />
     <ClInclude Include="..\..\source\Core\Network\NetPlayer.h" />
     <ClInclude Include="..\..\source\Core\Network\Network.h" />
     <ClInclude Include="..\..\source\Core\Network\Packet.h" />

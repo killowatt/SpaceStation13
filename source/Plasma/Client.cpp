@@ -1,9 +1,12 @@
 #include "Client.h"
+#include "Network/Network.h"
+
+#include "Network/MapDataPacket.h"
 
 bool Client::Connect(const char* address, uint16 port)
 {
 	Log::Print(LogCategory::Info, "Attempting to connect to %s:%d...", address, port);
-	
+	 
 	ENetAddress netAddress;
 	enet_address_set_host(&netAddress, address);
 	netAddress.port = port;
@@ -48,7 +51,31 @@ void Client::Update()
 	ENetEvent event;
 	while (enet_host_service(ClientHost, &event, 0) > 0)
 	{
+		switch (event.type)
+		{
+		case ENET_EVENT_TYPE_RECEIVE:
+			ByteStream reader(event.packet->data, event.packet->dataLength);
+			PACKET_DT packetType = reader.Read<PACKET_DT>();
 
+			switch (packetType)
+			{
+			case PacketTypeMapData:
+			{
+				MapData data = MapData::FromStream(reader);
+				Log::Print(LogCategory::Info, "Map Data received\n "
+					"Width: %d\n Height: %d\n Name: %s", data.Width, data.Height,
+					data.Name.c_str());
+				break;
+			}
+			default:
+				Log::Print(LogCategory::Warning, "Packet of type %d received by client, but "
+					"is not handled by implementation.", packetType);
+				break;
+			}
+
+			enet_packet_destroy(event.packet);
+			break;
+		}
 	}
 }
 void Client::Initialize()

@@ -33,6 +33,11 @@ struct PlayerData
 
 		return playerData;
 	}
+	static NetPlayer ToNetPlayer(PlayerData& playerData)
+	{
+		NetPlayer player;
+		player.Name = playerData.Name;
+	}
 
 	PlayerData() : Name("George Melons") {}
 };

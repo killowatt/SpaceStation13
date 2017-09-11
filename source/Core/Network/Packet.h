@@ -11,6 +11,7 @@ enum PacketType : PACKET_DT
 	PacketTypeReturnVersion = 2, // C2S
 
 	PacketTypePlayerData = 3, // C2S
+	PacketTypeMapData = 4, // S2C
 
 	PacketTypeTileChange = 100, // example
 };

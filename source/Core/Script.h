@@ -28,6 +28,7 @@ public:
 
 template<typename T>
 T Script::GetVariable(const std::string& name)
+
 {
 	if (!L)
 		return GetDefault<T>();

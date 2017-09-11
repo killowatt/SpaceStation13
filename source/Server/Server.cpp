@@ -1,11 +1,22 @@
 #include "Server.h"
 #include "Network/Network.h"
 
+// TODO: factor out these so we dont have such a f'd up header dependency tree
+#include "Network/MapDataPacket.h"
+
 int main()
 {
 	Log::Print(LogCategory::Info, "Test");
 	Server server;
 	server.Initialize();
+}
+
+void Server::SendPacket(const NetPlayer& player, ByteStream& stream)
+{
+	ENetPacket* packet = enet_packet_create(stream.GetData(), stream.GetSize(),
+		ENET_PACKET_FLAG_RELIABLE);
+
+	enet_peer_send(player.Peer, 0, packet);
 }
 
 void Server::Update()
@@ -16,8 +27,6 @@ void Server::Update()
 		std::string clientAddress = GetAddressString(&event.peer->address);
 		switch (event.type)
 		{
-		case ENET_EVENT_TYPE_NONE:
-			break;
 		case ENET_EVENT_TYPE_CONNECT:
 			Log::Print(LogCategory::Info, "Client connected from %s:%d",
 				clientAddress.c_str(), event.peer->address.port);
@@ -33,12 +42,31 @@ void Server::Update()
 			switch (packetType)
 			{
 			case PacketTypePlayerData:
+			{
 				PlayerData data = PlayerData::FromStream(reader);
 				Log::Print(LogCategory::Info, "Player Data received, name %s",
 					data.Name.c_str());
+				NetPlayer player;
+				player.Peer = event.peer;
+				player.Name = data.Name;
+				//ServerHost.peer
+
+				MapData mapData;
+				mapData.Width = 32;
+				mapData.Height = 192;
+				mapData.Name = "Goonstation";
+
+				ByteStream str = mapData.ToStream();
+				SendPacket(player, str);
+
 				break;
 			}
-
+			default:
+				Log::Print(LogCategory::Warning, "Packet of type %d received by server, "
+					"but is not handled by implementation.", packetType);
+				break;
+			}
+			enet_packet_destroy(event.packet);
 			break;
 		}
 	}
@@ -54,6 +82,9 @@ void Server::Initialize()
 	ServerHost = enet_host_create(&Address, 32, 2, 0, 0);
 	if (!ServerHost)
 		return;
+
+	// Server parameters
+	//ServerHost->duplicatePeers = 1; // TODO: implement this ourselves
 
 	// Server Loop
 	while (true)
