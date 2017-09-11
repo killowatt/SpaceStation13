@@ -51,6 +51,8 @@ void Server::Update()
 				player.Name = data.Name;
 				//ServerHost.peer
 
+				//Players.push_back(
+
 				MapData mapData;
 				mapData.Width = 32;
 				mapData.Height = 192;
