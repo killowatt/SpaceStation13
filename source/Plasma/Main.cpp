@@ -26,6 +26,8 @@
 
 #include <vector>
 
+#include "Text.h"
+
 using namespace std;
 
 static bool quitting = false;
@@ -79,13 +81,17 @@ void render() {
 
 		spri->SetPosition(glm::vec2(x * 15 + 100, y * 15 + 100));
 
-		renderer->Render(spri);
+		//renderer->Render(spri);
 
-		mrenda->TestRender();
+		Text text(renderer);
+
+//		mrenda->TestRender();
 
 		std::cout << "ERROR --> " << glGetError() << "\n";
 
+
 		renderer->SwapBuffers();
+		std::cout << "";
 } //render
 
 
@@ -141,7 +147,7 @@ int main()
 	//}
 
 	Engine engine;
-	engine.Initialize();
+	//engine.Initialize();
 
 	//return 0;
 	//JsRuntimeHandle runtime;

@@ -1,0 +1,2 @@
+Revamp project solution with CMake
+Include dependencies as third-party code that is compiled with the engine

@@ -23,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Plasma\Client.cpp" />
+    <ClCompile Include="..\..\source\Plasma\EditorState.cpp" />
     <ClCompile Include="..\..\source\Plasma\Engine.cpp" />
     <ClCompile Include="..\..\source\Plasma\Main.cpp" />
     <ClCompile Include="..\..\source\Plasma\MapRenderer.cpp" />
@@ -30,7 +31,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Plasma\Client.h" />
+    <ClInclude Include="..\..\source\Plasma\EditorState.h" />
     <ClInclude Include="..\..\source\Plasma\Engine.h" />
+    <ClInclude Include="..\..\source\Plasma\GameState.h" />
     <ClInclude Include="..\..\source\Plasma\MapRenderer.h" />
     <ClInclude Include="..\..\source\Plasma\TestShader.h" />
   </ItemGroup>

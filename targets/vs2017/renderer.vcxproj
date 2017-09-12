@@ -16,6 +16,7 @@
     <ClInclude Include="..\..\source\Renderer\RendererGL.h" />
     <ClInclude Include="..\..\source\Renderer\Shader.h" />
     <ClInclude Include="..\..\source\Renderer\Sprite.h" />
+    <ClInclude Include="..\..\source\Renderer\Text.h" />
     <ClInclude Include="..\..\source\Renderer\Texture.h" />
   </ItemGroup>
   <ItemGroup>
@@ -24,6 +25,7 @@
     <ClCompile Include="..\..\source\Renderer\RendererGL.cpp" />
     <ClCompile Include="..\..\source\Renderer\Shader.cpp" />
     <ClCompile Include="..\..\source\Renderer\Sprite.cpp" />
+    <ClCompile Include="..\..\source\Renderer\Text.cpp" />
     <ClCompile Include="..\..\source\Renderer\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -87,7 +89,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(Configuration)\SDL2.lib;$(Configuration)\glew32sd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(Configuration)\SDL2.lib;$(Configuration)\glew32sd.lib;$(Configuration)\freetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
@@ -110,7 +112,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(Configuration)\SDL2.lib;$(Configuration)\glew32sd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(Configuration)\SDL2.lib;$(Configuration)\glew32sd.lib;$(Configuration)\freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
