@@ -35,7 +35,7 @@ Text::Text(RendererGL* renderer)
 		Log::Print(LogCategory::Fatal, "Failed to initialize FreeType library.");
 
 	FT_Face face;
-	if (FT_New_Face(ft, "DINRg.ttf", 0, &face))
+	if (FT_New_Face(ft, "impact.ttf", 0, &face))
 		Log::Print(LogCategory::Error, "Font of name %s could not be found.", "NotYetImpl");
 
 	FT_Set_Pixel_Sizes(face, 0, 32);
@@ -45,8 +45,9 @@ Text::Text(RendererGL* renderer)
 	uint32 width = 0;
 	uint32 height = 0;
 	uint32 originDist = 0;
+	uint32 negOriginDist = 0;
 
-	const char* string = "The griffing greyshirt jumped over the dead clown";
+	const char* string = "Griffing Greyshirt";
 	for (int i = 0; i < strlen(string); i++)
 	{
 		char c = string[i];
@@ -56,24 +57,26 @@ Text::Text(RendererGL* renderer)
 		}
 
 		width += face->glyph->advance.x >> 6; // bitshift for 1/64th pixel size
-		uint32 potH = face->glyph->bitmap.rows +
+
+
+		uint32 positiveOriginHeight = face->glyph->bitmap.rows +
 			(face->glyph->bitmap.rows - face->glyph->bitmap_top);
 
-		if (face->glyph->bitmap.rows > face->glyph->bitmap_top)
-			height = potH;
-		if (height < potH)
-		{
-			originDist = potH;
-			height = potH;
-		}
+		uint32 negativeOriginHeight = face->glyph->bitmap.rows - face->glyph->bitmap_top;
 
+		if (face->glyph->bitmap.rows > face->glyph->bitmap_top &&
+			negOriginDist < negativeOriginHeight)
+			negOriginDist = face->glyph->bitmap.rows - face->glyph->bitmap_top;
+		else if (originDist < positiveOriginHeight)
+			originDist = positiveOriginHeight;
 
 	}
+	height = originDist + negOriginDist;
 
 	uint8* wowza = new uint8[width * height];
 	for (uint32 i = 0; i < width * height; i++)
 	{
-		wowza[i] = 64;
+		wowza[i] = 0;
 	}
 
 	Texture* tex = renderer->CreateTexture();
@@ -110,6 +113,7 @@ Text::Text(RendererGL* renderer)
 
 	Sprite* sprite = renderer->CreateSprite(tex);
 	sprite->SetPosition(glm::ivec2(5, 15));
+	sprite->Transform * glm::scale(glm::mat4(1.0), glm::vec3(0.25, 0.25, 0));
 
 	renderer->Render(sprite);
 }

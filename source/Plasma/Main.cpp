@@ -91,6 +91,7 @@ void render() {
 
 
 		renderer->SwapBuffers();
+
 		std::cout << "";
 } //render
 
