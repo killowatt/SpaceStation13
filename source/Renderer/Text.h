@@ -2,11 +2,11 @@
 #include "Core.h"
 #include "RendererGL.h"
 
-class Text
+class TextRenderer
 {
 	RendererGL* Renderer;
 
-	std::string ext;
+	std::string Text;
 
 	struct FreeTypeLib;
 	FreeTypeLib* FT;
@@ -18,12 +18,12 @@ class Text
 	bool Rendered;
 
 public:
-	void GetText() const;
+	std::string GetText() const { return Text; }
 	void SetText(const std::string& text);
 
 	Texture* GetTexture() { return TextImage; }
 	Sprite* GetSprite() { return TextSprite; }
 
-	Text(RendererGL* renderer, const char* fontPath, uint32 fontSize);
-	~Text();
+	TextRenderer(RendererGL* renderer, const char* fontPath, uint32 fontSize);
+	~TextRenderer();
 };

@@ -48,7 +48,7 @@ GameMap xyhz(8, 8);
 //std::vector<Sprite> mapz;
 bool initrm;
 
-Text* txt;
+TextRenderer* txt;
 
 float x;
 float y;
@@ -246,7 +246,7 @@ int main()
 	spri = new Sprite(renderer, textur);
 
 
-	txt = new Text(renderer, "DINRg.ttf", 36);
+	txt = new TextRenderer(renderer, "DINRg.ttf", 36);
 	txt->SetText("test");
 
 	shad = new TestShader(renderer);

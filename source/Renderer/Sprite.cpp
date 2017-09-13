@@ -49,6 +49,7 @@ Sprite::Sprite(RendererGL* renderer, Texture* texture)
 	glVertexAttribPointer(texCoordIndex, 2, GL_FLOAT, false, 0, 0);
 	glEnableVertexAttribArray(texCoordIndex);
 
+	SetPosition(glm::vec2(0, 0));
 	// create vbo, (vao too?)
 	// scaling/transform (matrices?)
 	// texture workz

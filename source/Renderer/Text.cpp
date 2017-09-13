@@ -4,26 +4,25 @@
 
 #include "GL/glew.h"
 
-struct Text::FreeTypeLib
+struct TextRenderer::FreeTypeLib
 {
 	FT_Library Library;
 	FT_Face Font;
 };
 
-void Text::GetText() const
-{
-}
-void Text::SetText(const std::string& text)
+void TextRenderer::SetText(const std::string& text)
 {
 	if (!IsValid)
 		return;
+
+	Text = text;
 
 	uint32 width = 0;
 	uint32 height = 0;
 	uint32 originDist = 0;
 	uint32 negOriginDist = 0;
 
-	const char* string = text.c_str();
+	const char* string = Text.c_str();
 	for (int i = 0; i < strlen(string); i++)
 	{
 		char c = string[i];
@@ -61,7 +60,7 @@ void Text::SetText(const std::string& text)
 	delete[] wowza;
 
 	uint32 x = 0;
-	uint32 y = 0;
+	//uint32 y = 0;
 	for (int i = 0; i < strlen(string); i++)
 	{
 		char c = string[i];
@@ -71,7 +70,7 @@ void Text::SetText(const std::string& text)
 		}
 
 		uint32 _x = x + FT->Font->glyph->bitmap_left;
-		uint32 _y = y + (FT->Font->glyph->bitmap.rows - FT->Font->glyph->bitmap_top);
+		uint32 _y = (FT->Font->glyph->bitmap.rows - FT->Font->glyph->bitmap_top);
 
 		_y = originDist - FT->Font->glyph->bitmap.rows +
 			(FT->Font->glyph->bitmap.rows - FT->Font->glyph->bitmap_top);
@@ -89,12 +88,10 @@ void Text::SetText(const std::string& text)
 	}
 
 	TextSprite = Renderer->CreateSprite(TextImage);
-	TextSprite->SetPosition(glm::ivec2(5, 15));
-	//sprite->Transform * glm::scale(glm::mat4(1.0), glm::vec3(0.25, 0.25, 0));
 
 	Rendered = true;
 }
-Text::Text(RendererGL* renderer, const char* fontPath, uint32 fontSize)
+TextRenderer::TextRenderer(RendererGL* renderer, const char* fontPath, uint32 fontSize)
 {
 	Renderer = renderer;
 	IsValid = false;
@@ -126,7 +123,7 @@ Text::Text(RendererGL* renderer, const char* fontPath, uint32 fontSize)
 
 	IsValid = true;
 }
-Text::~Text()
+TextRenderer::~TextRenderer()
 {
 	FT_Done_Face(FT->Font);
 	FT_Done_FreeType(FT->Library);
