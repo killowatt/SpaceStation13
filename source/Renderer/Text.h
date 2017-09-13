@@ -4,11 +4,26 @@
 
 class Text
 {
-	std::string txt;
+	RendererGL* Renderer;
+
+	std::string ext;
+
+	struct FreeTypeLib;
+	FreeTypeLib* FT;
+
+	Texture* TextImage;
+	Sprite* TextSprite;
+
+	bool IsValid;
+	bool Rendered;
 
 public:
 	void GetText() const;
 	void SetText(const std::string& text);
 
-	Text(RendererGL* renderer);
+	Texture* GetTexture() { return TextImage; }
+	Sprite* GetSprite() { return TextSprite; }
+
+	Text(RendererGL* renderer, const char* fontPath, uint32 fontSize);
+	~Text();
 };

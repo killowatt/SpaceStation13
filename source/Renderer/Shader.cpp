@@ -14,26 +14,21 @@ void Shader::Initialize()
 }
 void Shader::UploadTransform(const glm::mat4& transform)
 {
-	glm::mat4 scaley = glm::scale(glm::mat4(1.0f), glm::vec3(2, 2, 0)) * transform;
-
 	glUseProgram(ShaderProgram);
-	int32 location = glGetUniformLocation(ShaderProgram, "Model");
-	if (location > -1)
-		glUniformMatrix4fv(location, 1, false, &scaley[0][0]);
 
+	int32 modelLocation = glGetUniformLocation(ShaderProgram, "Model");
+	int32 viewLocation = glGetUniformLocation(ShaderProgram, "View");
+	int32 projectionLocation = glGetUniformLocation(ShaderProgram, "Projection");
 
-	int32 x = glGetUniformLocation(ShaderProgram, "View");
-	int32 y = glGetUniformLocation(ShaderProgram, "Projection");
+	glm::mat4 view = Renderer->GetCamera().GetView();
+	glm::mat4 projection = Renderer->GetCamera().GetProjection();
 
-	glm::mat4 xx = glm::translate(glm::mat4(1.0f), glm::vec3(0.0, 0.0, 0.0));
-	xx = glm::mat4(1.0f);
-	glm::mat4 yy = glm::ortho(0.0f, 512.0f, 512.0f, 0.0f, 0.0f, 1.0f);
-
-	xx = Renderer->GetCamera().GetView();
-	yy = Renderer->GetCamera().GetProjection();
-
-	glUniformMatrix4fv(x, 1, false, &xx[0][0]);
-	glUniformMatrix4fv(y, 1, false, &yy[0][0]);
+	if (modelLocation > -1)
+		glUniformMatrix4fv(modelLocation, 1, false, &transform[0][0]);
+	if (viewLocation > -1)
+		glUniformMatrix4fv(viewLocation, 1, false, &view[0][0]);
+	if (projectionLocation > -1)
+		glUniformMatrix4fv(projectionLocation, 1, false, &projection[0][0]);
 }
 
 //void Shader::SetUniform(const char* name, uint32 texture)

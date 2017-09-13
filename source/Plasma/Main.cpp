@@ -48,6 +48,7 @@ GameMap xyhz(8, 8);
 //std::vector<Sprite> mapz;
 bool initrm;
 
+Text* txt;
 
 float x;
 float y;
@@ -83,9 +84,9 @@ void render() {
 
 		//renderer->Render(spri);
 
-		Text text(renderer);
+		renderer->Render(txt->GetSprite());
 
-//		mrenda->TestRender();
+		mrenda->TestRender();
 
 		std::cout << "ERROR --> " << glGetError() << "\n";
 
@@ -236,13 +237,17 @@ int main()
 	renderer = new RendererGL();
 	renderer->Initialize();
 
-	cam = Camera(512, 512);
+	cam = Camera(768, 768);
 	renderer->SetCamera(&cam);
 
 	textur = renderer->CreateTexture();
 	textur->LoadFromFile("test.png");
 
 	spri = new Sprite(renderer, textur);
+
+
+	txt = new Text(renderer, "DINRg.ttf", 36);
+	txt->SetText("test");
 
 	shad = new TestShader(renderer);
 	shad->Texture = textur;
