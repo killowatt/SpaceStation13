@@ -33,6 +33,9 @@ void RendererGL::Render(Sprite* sprite)
 	if (!CurrentShader)
 		return; // TODO: guess what
 
+	if (!sprite->GetTexture())
+		return; // TODO: guess what!!
+
 	glBindTexture(GL_TEXTURE_2D, sprite->GetTexture()->GetTextureID());
 	CurrentShader->UploadTransform(sprite->Transform);
 	if (CurrentShader->GetShaderState() == ShaderState::Dynamic)

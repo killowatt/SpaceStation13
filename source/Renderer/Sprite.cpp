@@ -19,7 +19,6 @@ const uint32 BUFFER_SIZE = sizeof(VertexData) / sizeof(VertexData[0]);
 
 void Sprite::SetPosition(glm::ivec2 position)
 {
-	// TODO: what if the image is incorrectly configured, and is zero zero? warning?
 	Transform = glm::translate(glm::mat4(1.0f), glm::vec3(position.x, position.y, 0)) *
 		glm::scale(glm::mat4(1.0f), glm::vec3(Image->GetWidth(), Image->GetHeight(), 0));
 }
