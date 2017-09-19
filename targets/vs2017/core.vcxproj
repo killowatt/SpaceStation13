@@ -18,8 +18,8 @@
     <ClCompile Include="..\..\source\Core\GameMap.cpp" />
     <ClCompile Include="..\..\source\Core\Log.cpp" />
     <ClCompile Include="..\..\source\Core\PlayerController.cpp" />
-    <ClCompile Include="..\..\source\Core\Script.cpp" />
-    <ClCompile Include="..\..\source\Core\ScriptManager.cpp" />
+    <ClCompile Include="..\..\source\Core\Script\Script.cpp" />
+    <ClCompile Include="..\..\source\Core\Script\ScriptManager.cpp" />
     <ClCompile Include="..\..\source\Core\Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -35,8 +35,9 @@
     <ClInclude Include="..\..\source\Core\Network\Packet.h" />
     <ClInclude Include="..\..\source\Core\Network\VersionPacket.h" />
     <ClInclude Include="..\..\source\Core\PlayerController.h" />
-    <ClInclude Include="..\..\source\Core\Script.h" />
-    <ClInclude Include="..\..\source\Core\ScriptManager.h" />
+    <ClInclude Include="..\..\source\Core\Script\ErrorCode.h" />
+    <ClInclude Include="..\..\source\Core\Script\Script.h" />
+    <ClInclude Include="..\..\source\Core\Script\ScriptManager.h" />
     <ClInclude Include="..\..\source\Core\Tile.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -1,35 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Script">
+      <UniqueIdentifier>{af15debc-e1de-43e5-8a06-f857590e5fd6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Network">
       <UniqueIdentifier>{db95b969-fdd8-4506-a5b3-e40393933a1a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\source\Core\ByteStream.h" />
+    <ClInclude Include="..\..\source\Core\Core.h" />
+    <ClInclude Include="..\..\source\Core\Entity.h" />
+    <ClInclude Include="..\..\source\Core\GameMap.h" />
+    <ClInclude Include="..\..\source\Core\PlayerController.h" />
+    <ClInclude Include="..\..\source\Core\Tile.h" />
+    <ClInclude Include="..\..\source\Core\Log.h" />
+    <ClInclude Include="..\..\source\Core\Debug.h" />
+    <ClInclude Include="..\..\source\Core\Network\MapDataPacket.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Core\Network\NetPlayer.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Core\Network\Network.h">
+      <Filter>Network</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\source\Core\Network\Packet.h">
       <Filter>Network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Core\Network\VersionPacket.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Core\ByteStream.h" />
-    <ClInclude Include="..\..\source\Core\Core.h" />
-    <ClInclude Include="..\..\source\Core\Entity.h" />
-    <ClInclude Include="..\..\source\Core\GameMap.h" />
-    <ClInclude Include="..\..\source\Core\PlayerController.h" />
-    <ClInclude Include="..\..\source\Core\Script.h" />
-    <ClInclude Include="..\..\source\Core\ScriptManager.h" />
-    <ClInclude Include="..\..\source\Core\Tile.h" />
-    <ClInclude Include="..\..\source\Core\Log.h" />
-    <ClInclude Include="..\..\source\Core\Debug.h" />
-    <ClInclude Include="..\..\source\Core\Network\Network.h">
-      <Filter>Network</Filter>
+    <ClInclude Include="..\..\source\Core\Script\ErrorCode.h">
+      <Filter>Script</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Core\Network\NetPlayer.h">
-      <Filter>Network</Filter>
+    <ClInclude Include="..\..\source\Core\Script\Script.h">
+      <Filter>Script</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Core\Network\MapDataPacket.h">
-      <Filter>Network</Filter>
+    <ClInclude Include="..\..\source\Core\Script\ScriptManager.h">
+      <Filter>Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -38,10 +48,14 @@
     <ClCompile Include="..\..\source\Core\Entity.cpp" />
     <ClCompile Include="..\..\source\Core\GameMap.cpp" />
     <ClCompile Include="..\..\source\Core\PlayerController.cpp" />
-    <ClCompile Include="..\..\source\Core\Script.cpp" />
-    <ClCompile Include="..\..\source\Core\ScriptManager.cpp" />
     <ClCompile Include="..\..\source\Core\Tile.cpp" />
     <ClCompile Include="..\..\source\Core\Log.cpp" />
     <ClCompile Include="..\..\source\Core\Debug.cpp" />
+    <ClCompile Include="..\..\source\Core\Script\Script.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Core\Script\ScriptManager.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

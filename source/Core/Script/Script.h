@@ -1,3 +1,46 @@
+#pragma once
+#include "Core.h"
+
+class Script
+{
+	void* Context;
+
+	void* GetPropertyRef(const std::string& name);
+
+	template<typename T> T Get(void* value) { return 0; }
+	int32 GetInteger(void* value);
+	double GetDouble(void* value);
+	std::string GetString(void* value);
+
+public:
+	template <typename T>
+	T GetProperty(const std::string& name);
+
+	Script(void* runtime, const std::string& source);
+};
+
+template<typename T>
+T Script::GetProperty(const std::string& name)
+{
+	void* property = GetPropertyRef(name);
+	return Get<T>(property);
+}
+
+template<>
+inline int32 Script::Get(void* value) { return GetInteger(value); }
+
+template<>
+inline bool Script::Get(void* value) { return GetInteger(value) != 0; }
+
+template<>
+inline double Script::Get(void* value) { return GetDouble(value); }
+
+template<>
+inline float Script::Get(void* value) { return (float)GetDouble(value); }
+
+template<>
+inline std::string Script::Get(void* value) { return GetString(value); }
+
 //#pragma once
 //#include "Core.h"
 //#include <string>

@@ -70,6 +70,9 @@ void Log::Print(LogCategory category, const char* format, ...)
 		format++;
 	}
 	std::cout << "\n";
+
+	if (category == LogCategory::Fatal) // TODO: VVV
+		Debug::RuntimeError("Todo: Stringstream error message into both log output and err");
 }
 //void Log::Print(LogCategory category, const char* system, const char* message)
 //{

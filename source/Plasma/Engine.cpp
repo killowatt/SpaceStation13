@@ -1,6 +1,6 @@
 #include "Engine.h"
 
-#include "Script.h"
+#include "Script/Script.h"
 
 #include "ByteStream.h"
 

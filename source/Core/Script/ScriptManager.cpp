@@ -1,15 +1,16 @@
-//#include "Script.h"
-//
-//Script::Script(const std::string& fileName)
-//{
-//	L = luaL_newstate();
-//	if (luaL_loadfile(L, fileName.c_str()) || lua_pcall(L, 0, 0, 0))
-//		return; // TODO: log script failure
-//
-//	//luaL_openlibs(L); // This opens up the lua-scripting standard libs (like io)
-//}
-//
-//// Util
+#include "ScriptManager.h"
+#include "ChakraCore.h"
+#include "ErrorCode.h"
+
+void ScriptManager::Initialize()
+{
+	JsErrorCode error = JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &Runtime);
+	if (error) Log::Print(LogCategory::Fatal, "Script Engine Runtime initialization failed (%s)",
+			ErrorCodeToString(error).c_str());
+
+
+}
+
 //bool Script::GetFromStack(const std::string& variable, int32& level)
 //{
 //	level = 0;
@@ -42,4 +43,3 @@
 //	if (lua_isnil(L, -1))
 //		return false; //  TODO: print is not defined
 //	return true;
-//}
