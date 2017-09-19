@@ -131,12 +131,14 @@ int main()
 	JsRuntimeHandle Runtime;
 	JsErrorCode error = JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &Runtime);
 
+
+
 	Script scripte(Runtime,
 		"var xyz = { abe: 99,  nest: { pie: 3.14159, bubble: \"Greetings\" } }");
 
-	std::cout << scripte.GetProperty<int32>("xyz.abe");
-	std::cout << scripte.GetProperty<double>("xyz.nest.pie");
-	std::cout << scripte.GetProperty<std::string>("xyz.nest.bubble");
+	std::cout << scripte.GetProperty<int32>("xyz.abe") << std::endl;
+	std::cout << scripte.GetProperty<double>("xyz.nest.pie") << std::endl;
+	std::cout << scripte.GetProperty<std::string>("xyz.nest.bubble") << std::endl;
 
 
 

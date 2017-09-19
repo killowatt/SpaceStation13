@@ -118,13 +118,20 @@ Script::Script(void* runtime, const std::string& source)
 	if (error) Log::Print(LogCategory::Error, "Failed to set script context (%s)",
 		ErrorCodeToString(error).c_str());
 
-	JsValueRef sourceCode;
+	JsValueRef sourceJS;
 	error = JsCreateExternalArrayBuffer((void*)source.c_str(), source.size(),
-		nullptr, nullptr, &sourceCode);
+		nullptr, nullptr, &sourceJS);
 	if (error) Log::Print(LogCategory::Error, "Script creation failed (%s)",
 		ErrorCodeToString(error).c_str());
 
-	//error = JsRun(sourceCode, 
+	JsValueRef origin;
+	JsCreateString("", strlen(""), &origin);
+
+	error = JsRun(sourceJS, 0, origin, JsParseScriptAttributeNone, nullptr);
+	if (error) Log::Print(LogCategory::Error, "Script evaluation failed (%s)",
+		ErrorCodeToString(error).c_str());
+
+	return;
 }
 
 
