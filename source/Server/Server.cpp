@@ -6,7 +6,6 @@
 
 int main()
 {
-	Log::Print(LogCategory::Info, "Test");
 	Server server;
 	server.Initialize();
 }
@@ -17,6 +16,10 @@ void Server::SendPacket(const NetPlayer& player, ByteStream& stream)
 		ENET_PACKET_FLAG_RELIABLE);
 
 	enet_peer_send(player.Peer, 0, packet);
+}
+
+void Server::ChangeMap()
+{
 }
 
 void Server::Update()
@@ -49,17 +52,16 @@ void Server::Update()
 				NetPlayer player;
 				player.Peer = event.peer;
 				player.Name = data.Name;
-				//ServerHost.peer
 
 				//Players.push_back(
 
 				MapData mapData;
+				mapData.Name = "Goonstation";
 				mapData.Width = 32;
 				mapData.Height = 192;
-				mapData.Name = "Goonstation";
 
-				ByteStream str = mapData.ToStream();
-				SendPacket(player, str);
+				ByteStream mapDataStream = mapData.ToStream();
+				SendPacket(player, mapDataStream);
 
 				break;
 			}
@@ -75,6 +77,8 @@ void Server::Update()
 }
 void Server::Initialize()
 {
+	Log::Print(LogCategory::Info, "Initializing server...");
+
 	int result = enet_initialize();
 	AssertRT(!result, "Networking system failed to initialize.");
 
@@ -87,6 +91,13 @@ void Server::Initialize()
 
 	// Server parameters
 	//ServerHost->duplicatePeers = 1; // TODO: implement this ourselves
+
+	CurrentMap = nullptr; // We don't have a map loaded yet
+
+	CurrentMap = new GameMap(64, 256); // Temp load map for testing
+
+
+	Log::Print(LogCategory::Info, "Server initialization success, proceeding to loop.");
 
 	// Server Loop
 	while (true)

@@ -6,7 +6,7 @@ GameMap::GameMap(uint32 width, uint32 height)
 	Width = width;
 	Height = height;
 
-
+	Name = "DefaultMapName";
 }
 GameMap::GameMap(const std::string& filename)
 {

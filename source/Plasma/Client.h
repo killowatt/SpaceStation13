@@ -3,8 +3,11 @@
 #include "ByteStream.h"
 #include <enet/enet.h>
 
+class Engine;
 class Client
 {
+	Engine* EngineRef;
+
 	ENetAddress Address;
 	ENetHost* ClientHost;
 	ENetPeer* Server;
@@ -18,7 +21,7 @@ public:
 	// SendPacketImmediate?
 
 	void Update();
-	void Initialize();
+	void Initialize(Engine* engine);
 
 	Client();
 	~Client();

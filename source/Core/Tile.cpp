@@ -2,5 +2,7 @@
 
 Tile::Tile()
 {
-	SpriteEnabled = false;
+	SpriteEnabled = false; // TODO: Entity component system will handle this
+
+	ScriptID = 0;
 }

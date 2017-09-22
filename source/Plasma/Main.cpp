@@ -128,26 +128,26 @@ std::string xLoadFile(const char* fileName) // TODO:  redo this garbage
 
 int main()
 {
-	JsRuntimeHandle Runtime;
-	JsErrorCode error = JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &Runtime);
+	//JsRuntimeHandle Runtime;
+	//JsErrorCode error = JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &Runtime);
 
 
 
-	Script scripte(Runtime,
-		"var xyz = { abe: 99,  nest: { pie: 3.14159, bubble: \"Greetings\" } }");
+	//Script scripte(Runtime,
+	//	"var xyz = { abe: 99,  nest: { pie: 3.14159, bubble: \"Greetings\" } }");
 
-	std::cout << scripte.GetProperty<int32>("xyz.abe") << std::endl;
-	std::cout << scripte.GetProperty<double>("xyz.nest.pie") << std::endl;
-	std::cout << scripte.GetProperty<std::string>("xyz.nest.bubble") << std::endl;
-
-
-
-
+	//std::cout << scripte.GetProperty<int32>("xyz.abe") << std::endl;
+	//std::cout << scripte.GetProperty<double>("xyz.nest.pie") << std::endl;
+	//std::cout << scripte.GetProperty<std::string>("xyz.nest.bubble") << std::endl;
 
 
 
 
-	std::getchar(); // SCRIPTEND
+
+
+
+
+	//std::getchar(); // SCRIPTEND
 
 	//Server server;
 	//TestClient testClient;
@@ -171,8 +171,11 @@ int main()
 	//	return 0;
 	//}
 
+	printf("Press enter to start client.");
+	std::getchar();
+
 	Engine engine;
-	//engine.Initialize();
+	engine.Initialize();
 
 	//return 0;
 	//JsRuntimeHandle runtime;
@@ -248,6 +251,8 @@ int main()
 	////return 0;
 
 	//return 1;
+
+	std::getchar();
 
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
 		SDL_Log("Failed to initialize SDL: %s", SDL_GetError());

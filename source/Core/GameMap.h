@@ -12,6 +12,8 @@ private:
 
 	uint32 IndexFromVector2D(uint32 x, uint32 y) { return Width * y + x; }
 public:
+	std::string Name;
+
 	void SaveFile() { };
 
 	Tile& GetTile(uint32 x, uint32 y) { return TileData[IndexFromVector2D(x, y)]; }

@@ -1,6 +1,7 @@
 #include "Client.h"
+#include "Engine.h"
+#include "GameMap.h"
 #include "Network/Network.h"
-
 #include "Network/MapDataPacket.h"
 
 bool Client::Connect(const char* address, uint16 port)
@@ -65,6 +66,10 @@ void Client::Update()
 				Log::Print(LogCategory::Info, "Map Data received\n "
 					"Width: %d\n Height: %d\n Name: %s", data.Width, data.Height,
 					data.Name.c_str());
+
+				GameMap* map = new GameMap(data.Width, data.Height); // TODO:
+				map->Name = data.Name;				// MapData/GameMap should do this,
+				EngineRef->ChangeLevel(map);		// We just do this for work checking sake
 				break;
 			}
 			default:
@@ -78,8 +83,10 @@ void Client::Update()
 		}
 	}
 }
-void Client::Initialize()
+void Client::Initialize(Engine* engine)
 {
+	EngineRef = engine;
+
 	int result = enet_initialize();
 	AssertRT(!result, "Networking system failed to initialize. Code %d", result);
 
@@ -89,7 +96,6 @@ void Client::Initialize()
 
 Client::Client()
 {
-
 }
 Client::~Client()
 {

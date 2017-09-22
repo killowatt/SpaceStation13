@@ -3,6 +3,8 @@
 #include "Network/Network.h"
 #include "Network/NetPlayer.h"
 
+#include "GameMap.h"
+
 #include <vector>
 #include <enet/enet.h>
 
@@ -13,8 +15,11 @@ class Server
 
 public:
 	std::vector<NetPlayer> Players;
+	GameMap* CurrentMap;
 
 	void SendPacket(const NetPlayer& player, ByteStream& stream);
+
+	void ChangeMap();
 
 	void Update();
 	void Initialize();
