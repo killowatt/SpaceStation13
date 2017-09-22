@@ -3,6 +3,8 @@
 #include "ErrorCode.h"
 #include <vector>
 
+// TODO: pass along error messages to scriptmanager for it to handle as script engine events?
+
 void* Script::GetPropertyRef(const std::string& name) // TODO: handle errors, return bool and use
 {                                                   // out variable instead for ref
 	JsValueRef last;

@@ -27,7 +27,7 @@ public:
 
 	void SetImage(uint8* pixels, uint32 width, uint32 height, PixelType type);
 	//void BlitSubImage(uint8* pixels, uint32 width, uint32 height, uint32 x, uint32 y);
-	void LoadFromFile(const char* fileName);
+	void LoadFromFile(const char* fileName); // TODO: remove, assign to resource manager class
 
 	Texture(RendererGL* renderer);
 };

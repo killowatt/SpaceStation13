@@ -21,6 +21,7 @@
     <ClCompile Include="..\..\source\Core\Script\Script.cpp" />
     <ClCompile Include="..\..\source\Core\Script\ScriptManager.cpp" />
     <ClCompile Include="..\..\source\Core\Tile.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Core\ByteStream.h" />
@@ -39,6 +40,7 @@
     <ClInclude Include="..\..\source\Core\Script\Script.h" />
     <ClInclude Include="..\..\source\Core\Script\ScriptManager.h" />
     <ClInclude Include="..\..\source\Core\Tile.h" />
+    <ClInclude Include="ResourceManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
