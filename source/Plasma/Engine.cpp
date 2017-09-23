@@ -15,12 +15,9 @@ void Engine::ChangeLevel(GameMap* map)
 
 	Log::Print(LogCategory::Info, "Changing level to %s", map->Name.c_str());
 	if (CurrentMap)
-	{
 		delete CurrentMap;
-	}
-	//	delete CurrentMap;
-	
-	//CurrentMap = map;
+
+
 }
 
 void Engine::Update()

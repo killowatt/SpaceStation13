@@ -16,6 +16,7 @@ public:
 
 	void SaveFile() { };
 
+	Tile& GetTile(uint32 index) { return TileData[index]; }
 	Tile& GetTile(uint32 x, uint32 y) { return TileData[IndexFromVector2D(x, y)]; }
 
 	uint32 GetWidth() const { return Width; }

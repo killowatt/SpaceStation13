@@ -41,7 +41,8 @@
     <ClInclude Include="..\..\source\Core\Script\ScriptManager.h">
       <Filter>Script</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="..\..\source\Core\ResourceManager.h" />
+    <ClInclude Include="..\..\source\Core\Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Core\ByteStream.cpp" />
@@ -58,6 +59,6 @@
     <ClCompile Include="..\..\source\Core\Script\ScriptManager.cpp">
       <Filter>Script</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="..\..\source\Core\ResourceManager.cpp" />
   </ItemGroup>
 </Project>

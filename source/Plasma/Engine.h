@@ -1,6 +1,7 @@
 #pragma once
 #include "Core.h"
 #include "Client.h"
+#include <map>
 
 class GameMap;
 class Engine

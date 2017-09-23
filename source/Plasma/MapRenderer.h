@@ -11,10 +11,14 @@ class MapRenderer : NonCopyable
 	//std::map<std::string, Texture*> TextureMap; // (future reference, not real)
 
 	const GameMap* Map;
+
+	std::vector<Texture*> Textures;
 	std::vector<Sprite*> Sprites;
 
 public:
+
+
 	void TestRender();
 
-	MapRenderer(const GameMap& gameMap, RendererGL* renderer);
+	MapRenderer(const GameMap* map, RendererGL* renderer);
 };

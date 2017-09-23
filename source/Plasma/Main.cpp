@@ -31,6 +31,8 @@
 #include "Script/Script.h"
 #include "ChakraCore.h"
 
+#include "Entity.h"
+
 using namespace std;
 
 static bool quitting = false;
@@ -63,7 +65,7 @@ void render() {
 		//mapz = std::vector<Sprite>(4 * 4, Sprite(renderer, textur));
 
 
-		mrenda = new MapRenderer(xyhz, renderer);
+		mrenda = new MapRenderer(&xyhz, renderer);
 
 		initrm = true;
 	}
@@ -128,10 +130,16 @@ std::string xLoadFile(const char* fileName) // TODO:  redo this garbage
 
 int main()
 {
+
 	//JsRuntimeHandle Runtime;
 	//JsErrorCode error = JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &Runtime);
 
+	Entity e;
+	e.AddComponent<TestComponentA>(new TestComponentA());
+	e.AddComponent<TestComponentB>(new TestComponentB());
 
+	TestComponentA* a = e.GetComponent<TestComponentA>();
+	TestComponentB* b = e.GetComponent<TestComponentB>();
 
 	//Script scripte(Runtime,
 	//	"var xyz = { abe: 99,  nest: { pie: 3.14159, bubble: \"Greetings\" } }");
@@ -147,7 +155,7 @@ int main()
 
 
 
-	//std::getchar(); // SCRIPTEND
+	std::getchar(); // SCRIPTEND
 
 	//Server server;
 	//TestClient testClient;

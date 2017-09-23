@@ -18,10 +18,10 @@
     <ClCompile Include="..\..\source\Core\GameMap.cpp" />
     <ClCompile Include="..\..\source\Core\Log.cpp" />
     <ClCompile Include="..\..\source\Core\PlayerController.cpp" />
+    <ClCompile Include="..\..\source\Core\ResourceManager.cpp" />
     <ClCompile Include="..\..\source\Core\Script\Script.cpp" />
     <ClCompile Include="..\..\source\Core\Script\ScriptManager.cpp" />
     <ClCompile Include="..\..\source\Core\Tile.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Core\ByteStream.h" />
@@ -36,11 +36,12 @@
     <ClInclude Include="..\..\source\Core\Network\Packet.h" />
     <ClInclude Include="..\..\source\Core\Network\VersionPacket.h" />
     <ClInclude Include="..\..\source\Core\PlayerController.h" />
+    <ClInclude Include="..\..\source\Core\ResourceManager.h" />
+    <ClInclude Include="..\..\source\Core\Resource.h" />
     <ClInclude Include="..\..\source\Core\Script\ErrorCode.h" />
     <ClInclude Include="..\..\source\Core\Script\Script.h" />
     <ClInclude Include="..\..\source\Core\Script\ScriptManager.h" />
     <ClInclude Include="..\..\source\Core\Tile.h" />
-    <ClInclude Include="ResourceManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
