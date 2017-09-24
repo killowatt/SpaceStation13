@@ -43,6 +43,7 @@
     </ClInclude>
     <ClInclude Include="..\..\source\Core\ResourceManager.h" />
     <ClInclude Include="..\..\source\Core\Resource.h" />
+    <ClInclude Include="..\..\source\Core\ContentArchive.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Core\ByteStream.cpp" />
@@ -60,5 +61,9 @@
       <Filter>Script</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Core\ResourceManager.cpp" />
+    <ClCompile Include="..\..\source\Core\ContentArchive.cpp" />
+    <ClCompile Include="..\..\source\Core\Network\ContentArchivePacket.h">
+      <Filter>Network</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

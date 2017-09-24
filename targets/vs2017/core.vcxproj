@@ -12,11 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Core\ByteStream.cpp" />
+    <ClCompile Include="..\..\source\Core\ContentArchive.cpp" />
     <ClCompile Include="..\..\source\Core\Core.cpp" />
     <ClCompile Include="..\..\source\Core\Debug.cpp" />
     <ClCompile Include="..\..\source\Core\Entity.cpp" />
     <ClCompile Include="..\..\source\Core\GameMap.cpp" />
     <ClCompile Include="..\..\source\Core\Log.cpp" />
+    <ClCompile Include="..\..\source\Core\Network\ContentArchivePacket.h" />
     <ClCompile Include="..\..\source\Core\PlayerController.cpp" />
     <ClCompile Include="..\..\source\Core\ResourceManager.cpp" />
     <ClCompile Include="..\..\source\Core\Script\Script.cpp" />
@@ -25,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Core\ByteStream.h" />
+    <ClInclude Include="..\..\source\Core\ContentArchive.h" />
     <ClInclude Include="..\..\source\Core\Core.h" />
     <ClInclude Include="..\..\source\Core\Debug.h" />
     <ClInclude Include="..\..\source\Core\Entity.h" />
@@ -99,7 +102,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(Configuration)\ChakraCore.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(Configuration)\ChakraCore.lib;$(Configuration)\zlibstaticd.lib</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>
@@ -122,7 +125,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalDependencies>lua53.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(Configuration)\ChakraCore.lib;$(Configuration)\zlib.lib</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>

@@ -14,6 +14,7 @@ enum class Replication // for net
 struct Component
 {
 	virtual ~Component() {}
+
 	virtual void Update() {}
 	virtual void Render() {}
 };
@@ -34,16 +35,17 @@ struct TestComponentB : public Component
 class Entity
 {
 	std::unordered_map<std::type_index, Component*> Components;
+	Replication ReplState;
 
 public:
+	Entity();
+	~Entity();
+
 	template<typename T>
 	T* GetComponent();
 
 	template <typename T>
 	void AddComponent(Component* component);
-
-	Entity();
-
 };
 
 template<typename T>
