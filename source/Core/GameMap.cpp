@@ -12,3 +12,8 @@ GameMap::GameMap(const std::string& filename)
 {
 
 }
+
+void GameMap::Serialize()
+{
+
+}

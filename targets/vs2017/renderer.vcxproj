@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Renderer\Camera.h" />
+    <ClInclude Include="..\..\source\Renderer\Components\SpriteComponent.h" />
     <ClInclude Include="..\..\source\Renderer\lodepng.h" />
     <ClInclude Include="..\..\source\Renderer\Renderable.h" />
     <ClInclude Include="..\..\source\Renderer\RendererGL.h" />
@@ -82,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Core</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Include;$(SolutionDir)source\Renderer;$(SolutionDir)source\Core</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>

@@ -11,25 +11,16 @@ enum class Replication // for net
 	ClientServer
 };
 
-struct Component
+class Component
 {
+	Replication ReplState;
+
+public:
+
 	virtual ~Component() {}
 
 	virtual void Update() {}
 	virtual void Render() {}
-};
-
-struct TestComponentA : public Component
-{
-	int x;
-
-	TestComponentA() { x = 99; }
-};
-struct TestComponentB : public Component
-{
-	int y;
-
-	TestComponentB() { y = 42; }
 };
 
 class Entity

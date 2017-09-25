@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Core\ByteStream.h" />
+    <ClInclude Include="..\..\source\Core\Components\InputComponent.h" />
     <ClInclude Include="..\..\source\Core\ContentArchive.h" />
     <ClInclude Include="..\..\source\Core\Core.h" />
     <ClInclude Include="..\..\source\Core\Debug.h" />
@@ -37,6 +38,7 @@
     <ClInclude Include="..\..\source\Core\Network\NetPlayer.h" />
     <ClInclude Include="..\..\source\Core\Network\Network.h" />
     <ClInclude Include="..\..\source\Core\Network\Packet.h" />
+    <ClInclude Include="..\..\source\Core\Network\Replication.h" />
     <ClInclude Include="..\..\source\Core\Network\VersionPacket.h" />
     <ClInclude Include="..\..\source\Core\PlayerController.h" />
     <ClInclude Include="..\..\source\Core\ResourceManager.h" />

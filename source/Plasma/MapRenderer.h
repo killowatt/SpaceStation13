@@ -18,7 +18,7 @@ class MapRenderer : NonCopyable
 public:
 
 
-	void TestRender();
+	void TestRender(); // TODO: remove
 
 	MapRenderer(const GameMap* map, RendererGL* renderer);
 };

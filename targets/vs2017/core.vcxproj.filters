@@ -44,6 +44,10 @@
     <ClInclude Include="..\..\source\Core\ResourceManager.h" />
     <ClInclude Include="..\..\source\Core\Resource.h" />
     <ClInclude Include="..\..\source\Core\ContentArchive.h" />
+    <ClInclude Include="..\..\source\Core\Network\Replication.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Core\Components\InputComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Core\ByteStream.cpp" />

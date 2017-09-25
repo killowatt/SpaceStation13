@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\source\Renderer\Camera.cpp" />
+    <ClCompile Include="..\..\source\Renderer\lodepng.cpp" />
+    <ClCompile Include="..\..\source\Renderer\RendererGL.cpp" />
+    <ClCompile Include="..\..\source\Renderer\Shader.cpp" />
+    <ClCompile Include="..\..\source\Renderer\Sprite.cpp" />
+    <ClCompile Include="..\..\source\Renderer\Text.cpp" />
+    <ClCompile Include="..\..\source\Renderer\Texture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\source\Renderer\Camera.h" />
+    <ClInclude Include="..\..\source\Renderer\lodepng.h" />
+    <ClInclude Include="..\..\source\Renderer\Renderable.h" />
+    <ClInclude Include="..\..\source\Renderer\RendererGL.h" />
+    <ClInclude Include="..\..\source\Renderer\Shader.h" />
+    <ClInclude Include="..\..\source\Renderer\Sprite.h" />
+    <ClInclude Include="..\..\source\Renderer\Text.h" />
+    <ClInclude Include="..\..\source\Renderer\Texture.h" />
+    <ClInclude Include="..\..\source\Renderer\Components\SpriteComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Components">
+      <UniqueIdentifier>{8f1e762c-de46-44c5-920e-be33e72e3fdc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
