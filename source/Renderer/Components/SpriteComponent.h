@@ -7,6 +7,17 @@ class SpriteComponent : public Component
 	Sprite* InternalSprite;
 
 public:
-	SpriteComponent() {}
+	void Update()
+	{
+	}
+	void Render()
+	{
+		// Render InternalSprite
+	}
+
+	SpriteComponent()
+	{
+
+	}
 	~SpriteComponent() {}
 };

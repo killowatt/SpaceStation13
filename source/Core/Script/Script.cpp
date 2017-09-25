@@ -5,6 +5,43 @@
 
 // TODO: pass along error messages to scriptmanager for it to handle as script engine events?
 
+Script::Script()
+{
+	Context = nullptr;
+}
+Script::Script(void* runtime, const std::string& source)
+{
+	JsErrorCode error;
+
+	error = JsCreateContext(runtime, &Context);
+	if (error) Log::Print(LogCategory::Error, "Script creation failed (%s)",
+		ErrorCodeToString(error).c_str());
+
+	error = JsSetCurrentContext(Context);
+	if (error) Log::Print(LogCategory::Error, "Failed to set script context (%s)",
+		ErrorCodeToString(error).c_str());
+
+	JsValueRef sourceJS;
+	error = JsCreateExternalArrayBuffer((void*)source.c_str(), source.size(),
+		nullptr, nullptr, &sourceJS);
+	if (error) Log::Print(LogCategory::Error, "Script creation failed (%s)",
+		ErrorCodeToString(error).c_str());
+
+	JsValueRef origin;
+	JsCreateString("", strlen(""), &origin);
+
+	error = JsRun(sourceJS, 0, origin, JsParseScriptAttributeNone, nullptr);
+	if (error) Log::Print(LogCategory::Error, "Script evaluation failed (%s)",
+		ErrorCodeToString(error).c_str());
+
+	return;
+}
+
+void Script::CallFunction()
+{
+	JsRun(
+}
+
 void* Script::GetPropertyRef(const std::string& name) // TODO: handle errors, return bool and use
 {                                                   // out variable instead for ref
 	JsValueRef last;
@@ -106,34 +143,6 @@ std::string Script::GetString(void* value) // TODO: revamp to be faster? goes fo
 	delete[] buffer;
 
 	return result;
-}
-
-Script::Script(void* runtime, const std::string& source)
-{
-	JsErrorCode error;
-
-	error = JsCreateContext(runtime, &Context);
-	if (error) Log::Print(LogCategory::Error, "Script creation failed (%s)",
-		ErrorCodeToString(error).c_str());
-
-	error = JsSetCurrentContext(Context);
-	if (error) Log::Print(LogCategory::Error, "Failed to set script context (%s)",
-		ErrorCodeToString(error).c_str());
-
-	JsValueRef sourceJS;
-	error = JsCreateExternalArrayBuffer((void*)source.c_str(), source.size(),
-		nullptr, nullptr, &sourceJS);
-	if (error) Log::Print(LogCategory::Error, "Script creation failed (%s)",
-		ErrorCodeToString(error).c_str());
-
-	JsValueRef origin;
-	JsCreateString("", strlen(""), &origin);
-
-	error = JsRun(sourceJS, 0, origin, JsParseScriptAttributeNone, nullptr);
-	if (error) Log::Print(LogCategory::Error, "Script evaluation failed (%s)",
-		ErrorCodeToString(error).c_str());
-
-	return;
 }
 
 

@@ -1,6 +1,5 @@
 #pragma once
-#include <vector>
-#include <memory>
+#include "Script/Script.h"
 #include <unordered_map>
 #include <typeindex>
 
@@ -25,6 +24,8 @@ public:
 
 class Entity
 {
+	std::string ScriptName;
+
 	std::unordered_map<std::type_index, Component*> Components;
 	Replication ReplState;
 
@@ -37,6 +38,8 @@ public:
 
 	template <typename T>
 	void AddComponent(Component* component);
+
+	const std::string& GetScriptName() { return ScriptName; }
 };
 
 template<typename T>

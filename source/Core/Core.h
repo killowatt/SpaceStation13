@@ -22,3 +22,5 @@ struct NonCopyable
 	NonCopyable(const NonCopyable&) = delete;
 	NonCopyable() = default;
 };
+
+std::string FileLoadLines(const std::string& filename);

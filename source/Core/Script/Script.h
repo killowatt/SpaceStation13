@@ -13,10 +13,13 @@ class Script
 	std::string GetString(void* value);
 
 public:
+	Script();
+	Script(void* runtime, const std::string& source);
+
 	template <typename T>
 	T GetProperty(const std::string& name);
 
-	Script(void* runtime, const std::string& source);
+	void CallFunction();
 };
 
 template<typename T>

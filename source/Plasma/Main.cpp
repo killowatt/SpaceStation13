@@ -134,12 +134,12 @@ int main()
 	//JsRuntimeHandle Runtime;
 	//JsErrorCode error = JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &Runtime);
 
-	Entity e;
-	e.AddComponent<TestComponentA>(new TestComponentA());
-	e.AddComponent<TestComponentB>(new TestComponentB());
+	//Entity e;
+	//e.AddComponent<TestComponentA>(new TestComponentA());
+	//e.AddComponent<TestComponentB>(new TestComponentB());
 
-	TestComponentA* a = e.GetComponent<TestComponentA>();
-	TestComponentB* b = e.GetComponent<TestComponentB>();
+	//TestComponentA* a = e.GetComponent<TestComponentA>();
+	//TestComponentB* b = e.GetComponent<TestComponentB>();
 
 	//Script scripte(Runtime,
 	//	"var xyz = { abe: 99,  nest: { pie: 3.14159, bubble: \"Greetings\" } }");
