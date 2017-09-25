@@ -48,6 +48,9 @@
       <Filter>Network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Core\Components\InputComponent.h" />
+    <ClInclude Include="..\..\source\Core\Script\NativeBindings.h">
+      <Filter>Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Core\ByteStream.cpp" />

@@ -44,6 +44,7 @@
     <ClInclude Include="..\..\source\Core\ResourceManager.h" />
     <ClInclude Include="..\..\source\Core\Resource.h" />
     <ClInclude Include="..\..\source\Core\Script\ErrorCode.h" />
+    <ClInclude Include="..\..\source\Core\Script\NativeBindings.h" />
     <ClInclude Include="..\..\source\Core\Script\Script.h" />
     <ClInclude Include="..\..\source\Core\Script\ScriptManager.h" />
     <ClInclude Include="..\..\source\Core\Tile.h" />

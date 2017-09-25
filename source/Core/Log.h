@@ -4,6 +4,7 @@
 enum class LogCategory
 {
 	Info,
+	Script,
 	Warning,
 	Error,
 	Fatal

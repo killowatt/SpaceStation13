@@ -131,8 +131,8 @@ std::string xLoadFile(const char* fileName) // TODO:  redo this garbage
 int main()
 {
 
-	//JsRuntimeHandle Runtime;
-	//JsErrorCode error = JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &Runtime);
+	JsRuntimeHandle Runtime;
+	JsErrorCode error = JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &Runtime);
 
 	//Entity e;
 	//e.AddComponent<TestComponentA>(new TestComponentA());
@@ -141,8 +141,8 @@ int main()
 	//TestComponentA* a = e.GetComponent<TestComponentA>();
 	//TestComponentB* b = e.GetComponent<TestComponentB>();
 
-	//Script scripte(Runtime,
-	//	"var xyz = { abe: 99,  nest: { pie: 3.14159, bubble: \"Greetings\" } }");
+	Script scripte(Runtime,
+		"plasmaLog('hello');");
 
 	//std::cout << scripte.GetProperty<int32>("xyz.abe") << std::endl;
 	//std::cout << scripte.GetProperty<double>("xyz.nest.pie") << std::endl;

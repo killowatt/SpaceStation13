@@ -19,6 +19,9 @@ char* Log::GetCategoryName(LogCategory category)
 	case LogCategory::Info:
 		categoryName = "Info";
 		break;
+	case LogCategory::Script:
+		categoryName = "Script";
+		break;
 	case LogCategory::Warning:
 		categoryName = "Warning";
 		break;

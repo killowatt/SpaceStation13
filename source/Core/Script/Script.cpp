@@ -3,6 +3,8 @@
 #include "ErrorCode.h"
 #include <vector>
 
+#include "NativeBindings.h"
+
 // TODO: pass along error messages to scriptmanager for it to handle as script engine events?
 
 Script::Script()
@@ -27,6 +29,12 @@ Script::Script(void* runtime, const std::string& source)
 	if (error) Log::Print(LogCategory::Error, "Script creation failed (%s)",
 		ErrorCodeToString(error).c_str());
 
+
+	// temp
+	RegisterFunction("plasmaLog", LogBinding);
+
+
+
 	JsValueRef origin;
 	JsCreateString("", strlen(""), &origin);
 
@@ -34,12 +42,28 @@ Script::Script(void* runtime, const std::string& source)
 	if (error) Log::Print(LogCategory::Error, "Script evaluation failed (%s)",
 		ErrorCodeToString(error).c_str());
 
+
+
 	return;
 }
 
 void Script::CallFunction()
 {
-	JsRun(
+	//JsRun(
+}
+void Script::RegisterFunction(const std::string& name, JsNativeFunction function)
+{
+	JsErrorCode error;
+
+	JsPropertyIdRef propertyId;
+	error = JsCreatePropertyId(name.c_str(), name.size(), &propertyId);
+
+	JsValueRef functionRef;
+	error = JsCreateFunction(function, nullptr, &functionRef);
+
+	JsValueRef global;
+	error = JsGetGlobalObject(&global);
+	error = JsSetProperty(global, propertyId, functionRef, true);
 }
 
 void* Script::GetPropertyRef(const std::string& name) // TODO: handle errors, return bool and use

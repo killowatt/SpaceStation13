@@ -1,5 +1,6 @@
 #pragma once
 #include "Core.h"
+#include "ChakraCore.h"
 
 class Script
 {
@@ -20,6 +21,7 @@ public:
 	T GetProperty(const std::string& name);
 
 	void CallFunction();
+	void RegisterFunction(const std::string& name, JsNativeFunction function);
 };
 
 template<typename T>
