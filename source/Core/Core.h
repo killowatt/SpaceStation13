@@ -1,8 +1,10 @@
 #pragma once
 #include "Debug.h"
 #include "Log.h"
-#include <memory>
+//#include <memory>
 #include <string>
+#include <vector>
+#include <set>
 
 typedef signed int int32;
 typedef unsigned int uint32;
@@ -24,3 +26,6 @@ struct NonCopyable
 };
 
 std::string FileLoadLines(const std::string& filename);
+
+std::vector<std::string> SplitString(const std::string& string, const char delimiter);
+std::set<std::string> SplitStringUnique(const std::string& string, const char delimiter);

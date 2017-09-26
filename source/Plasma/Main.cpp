@@ -33,6 +33,11 @@
 
 #include "Entity.h"
 
+#include <set>
+
+#include "Components/SpriteComponent.h"
+#include <algorithm> // NEEDED FOR STD::FIND
+
 using namespace std;
 
 static bool quitting = false;
@@ -130,6 +135,24 @@ std::string xLoadFile(const char* fileName) // TODO:  redo this garbage
 
 int main()
 {
+	GameMap testMap(16, 9);
+
+	for (int x = 0; x < 16; x++)
+	{
+		for (int y = 0; y < 9; y++)
+		{
+			if ((y == 0 || y == 8) && (x == 0 || x == 15))
+			{
+				testMap.GetTile(x, y).SetScriptName("wall");
+			}
+			else
+			{
+				testMap.GetTile(x, y).SetScriptName("floor");
+			}
+		}
+	}
+
+
 
 	JsRuntimeHandle Runtime;
 	JsErrorCode error = JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &Runtime);
@@ -141,21 +164,29 @@ int main()
 	//TestComponentA* a = e.GetComponent<TestComponentA>();
 	//TestComponentB* b = e.GetComponent<TestComponentB>();
 
-	Script scripte(Runtime,
-		"plasmaLog('hello');");
+	//Script scripte(Runtime,
+	//	"test = { ez: 14, pz: 20, cheezy: 'hello' } \n plasmaLog('hello'); \n function butt() { plasmaLog('Butt Called'); }");
+
+	Script scripte(Runtime, FileLoadLines("wall.js"), "wall");
+
 
 	//std::cout << scripte.GetProperty<int32>("xyz.abe") << std::endl;
 	//std::cout << scripte.GetProperty<double>("xyz.nest.pie") << std::endl;
 	//std::cout << scripte.GetProperty<std::string>("xyz.nest.bubble") << std::endl;
+	//scripte.CallFunction("butt");
+	
+	std::string nmz = scripte.GetPropertyNames(scripte.GetName());
 
 
+	std::set<std::string> members = SplitStringUnique(nmz, ',');
+	members.insert("ass");
+
+	std::vector<std::string> mem = SplitString(nmz, ',');
+
+// component bleow
 
 
-
-
-
-
-	std::getchar(); // SCRIPTEND
+	//std::getchar(); // SCRIPTEND
 
 	//Server server;
 	//TestClient testClient;
@@ -183,7 +214,7 @@ int main()
 	std::getchar();
 
 	Engine engine;
-	engine.Initialize();
+	//engine.Initialize();
 
 	//return 0;
 	//JsRuntimeHandle runtime;
@@ -303,6 +334,41 @@ int main()
 	renderer->SetShader(shad);
 
 	std::cout << "ERROR --> " << glGetError() << "\n";
+
+
+	// ENT CREATION
+
+	std::string xyyyy = "FartNUGGET";
+
+	Entity e;
+
+	SpriteComponent* sprcmp = new SpriteComponent();
+
+	printf("AAAAA%sAAAAA", mem[0].c_str());
+
+	for (uint64 i = 0; i < mem.size(); i++)
+	{
+		if (mem[i] == "spriteComponent")
+		{
+			std::string icon =
+				scripte.GetProperty<std::string>(scripte.GetName() + ".spriteComponent.icon");
+
+			sprcmp->SetIcon(icon);
+		}
+	}
+	//if (members.find("spriteComponent") != members.end())
+	//{
+	//	std::string icon = 
+	//		scripte.GetProperty<std::string>(scripte.GetName() + ".spriteComponent.icon");
+
+	//	sprcmp->SetIcon(icon);
+	//}
+
+	e.AddComponent<SpriteComponent>(sprcmp);
+
+	//
+	SpriteComponent* sx = e.GetComponent<SpriteComponent>();
+
 
 	while (!quitting) {
 

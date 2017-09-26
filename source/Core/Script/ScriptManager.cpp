@@ -22,7 +22,7 @@ Script& ScriptManager::GetScript(const std::string& name)
 	if (Scripts.count(name) > 0)
 		return Scripts[name];
 
-	Script script(Runtime, FileLoadLines(name + ".js"));
+	Script script(Runtime, FileLoadLines(name + ".js"), name);
 	Scripts[name] = script;
 }
 

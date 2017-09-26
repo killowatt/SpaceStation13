@@ -1,10 +1,12 @@
 #pragma once
 #include "Core.h"
 #include "ChakraCore.h"
+#include <map>
 
 class Script
 {
 	void* Context;
+	std::string Name;
 
 	void* GetPropertyRef(const std::string& name);
 
@@ -15,13 +17,17 @@ class Script
 
 public:
 	Script();
-	Script(void* runtime, const std::string& source);
+	Script(void* runtime, const std::string& source, const std::string& name);
+
+	std::string GetName() { return Name; }
 
 	template <typename T>
 	T GetProperty(const std::string& name);
 
-	void CallFunction();
+	void CallFunction(const std::string& name);
 	void RegisterFunction(const std::string& name, JsNativeFunction function);
+
+	std::string GetPropertyNames(const std::string& objectName);
 };
 
 template<typename T>

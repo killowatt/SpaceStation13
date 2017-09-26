@@ -2,6 +2,7 @@
 #include "ChakraCore.h"
 #include "ErrorCode.h"
 #include <vector>
+#include <map>
 
 #include "NativeBindings.h"
 
@@ -10,9 +11,12 @@
 Script::Script()
 {
 	Context = nullptr;
+	Name = "";
 }
-Script::Script(void* runtime, const std::string& source)
+Script::Script(void* runtime, const std::string& source, const std::string& name)
 {
+	Name = name;
+
 	JsErrorCode error;
 
 	error = JsCreateContext(runtime, &Context);
@@ -47,9 +51,15 @@ Script::Script(void* runtime, const std::string& source)
 	return;
 }
 
-void Script::CallFunction()
+void Script::CallFunction(const std::string& name)
 {
-	//JsRun(
+	JsErrorCode err;
+	
+	JsValueRef undefined;
+	JsGetUndefinedValue(&undefined);
+
+	JsValueRef result;
+	err = JsCallFunction(GetPropertyRef(name), &undefined, 1, &result);
 }
 void Script::RegisterFunction(const std::string& name, JsNativeFunction function)
 {
@@ -64,6 +74,15 @@ void Script::RegisterFunction(const std::string& name, JsNativeFunction function
 	JsValueRef global;
 	error = JsGetGlobalObject(&global);
 	error = JsSetProperty(global, propertyId, functionRef, true);
+}
+
+std::string Script::GetPropertyNames(const std::string& objectName)
+{
+	JsValueRef object = GetPropertyRef(objectName);
+	JsValueRef names;
+	JsGetOwnPropertyNames(object, &names);
+
+	return GetString(names);
 }
 
 void* Script::GetPropertyRef(const std::string& name) // TODO: handle errors, return bool and use
@@ -166,6 +185,7 @@ std::string Script::GetString(void* value) // TODO: revamp to be faster? goes fo
 	std::string result(buffer, length + 1);
 	delete[] buffer;
 
+	result.resize(result.size() - 1); // Remove null-terminator
 	return result;
 }
 

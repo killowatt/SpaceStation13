@@ -4,11 +4,10 @@
 class Tile
 {
 private:
-	std::string SpriteName; // /?
-	bool SpriteEnabled;
-
-	uint64 ScriptID;
+	std::string ScriptName;
 
 public:
 	Tile();
+
+	void SetScriptName(const std::string& name) { ScriptName = name; }
 };
