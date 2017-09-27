@@ -214,7 +214,7 @@ int main()
 	std::getchar();
 
 	Engine engine;
-	//engine.Initialize();
+	engine.Initialize();
 
 	//return 0;
 	//JsRuntimeHandle runtime;

@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Server\Server.h" />
+    <ClInclude Include="..\..\source\Server\ServerSettings.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Server\Server.cpp" />

@@ -3,6 +3,7 @@
 Entity::Entity()
 {
 	ReplState = Replication::ClientServer;
+	ScriptName = "";
 }
 Entity::~Entity()
 {

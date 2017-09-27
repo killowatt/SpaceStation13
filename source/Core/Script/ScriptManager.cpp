@@ -26,3 +26,19 @@ Script& ScriptManager::GetScript(const std::string& name)
 	Scripts[name] = script;
 }
 
+
+void ScriptManager::InitializeComponents(Entity* entity, std::string script)
+{
+	Script& scr = GetScript(script);
+
+	std::vector<std::string> payne = SplitString(scr.GetPropertyNames(script), ',');
+
+
+	for (uint32 i = 0; i < payne.size(); i++)
+	{
+		if (payne[i] == "spriteComponent")
+		{
+			// TODO:
+		}
+	}
+}

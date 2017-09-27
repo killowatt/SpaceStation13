@@ -3,6 +3,8 @@
 #include "Script.h"
 #include <unordered_map>
 
+#include "Entity.h"
+
 class ScriptManager
 {
 private:
@@ -15,6 +17,7 @@ public:
 	//uint64 CreateScript(const std::string& source);
 
 	Script& GetScript(const std::string& name);
+	void InitializeComponents(Entity* entity, std::string script);
 
 	void Initialize();
 };

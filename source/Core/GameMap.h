@@ -1,7 +1,6 @@
 #pragma once
 #include "Core.h"
 #include "Tile.h"
-#include <string>
 
 class GameMap : NonCopyable
 {

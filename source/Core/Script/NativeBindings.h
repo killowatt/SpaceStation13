@@ -26,3 +26,16 @@ JsValueRef CALLBACK LogBinding(JsValueRef callee, bool isConstructCall, JsValueR
 	delete[] buffer;
 	return JS_INVALID_REFERENCE;
 }
+
+class ScriptNativeEngineInterface // this is just a meme name dont worry
+{
+public:
+
+
+
+	JsValueRef CALLBACK KeyPressed(JsValueRef callee, bool isConstructCall, JsValueRef* arguments,
+		unsigned short argumentCount, void* callbackState)
+	{
+
+	}
+};
