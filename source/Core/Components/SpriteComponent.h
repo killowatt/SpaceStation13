@@ -1,16 +1,16 @@
 #pragma once
 #include "Entity.h"
-#include "Sprite.h"
 
 class SpriteComponent : public Component
 {
 	std::string Icon;
-	Sprite* InternalSprite;
+	std::string IconState;
 
 public:
 	SpriteComponent()
 	{
-
+		Icon = "";
+		IconState = "";
 	}
 	~SpriteComponent() {}
 

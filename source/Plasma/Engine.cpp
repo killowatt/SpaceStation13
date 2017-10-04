@@ -53,21 +53,6 @@ void Engine::Initialize()
 				return; // TODO: proper shutdown
 			else if (event.type == SDL_KEYDOWN)
 			{
-				switch (event.key.keysym.sym)
-				{
-				case SDLK_w:
-					printf("W");
-					break;
-				case SDLK_a:
-					printf("A");
-					break;
-				case SDLK_s:
-					printf("S");
-					break;
-				case SDLK_d:
-					printf("D");
-					break;
-				}
 			}
 		}
 		Update();

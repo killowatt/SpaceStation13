@@ -18,13 +18,5 @@
     <ClInclude Include="..\..\source\Renderer\Sprite.h" />
     <ClInclude Include="..\..\source\Renderer\Text.h" />
     <ClInclude Include="..\..\source\Renderer\Texture.h" />
-    <ClInclude Include="..\..\source\Renderer\Components\SpriteComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Components">
-      <UniqueIdentifier>{8f1e762c-de46-44c5-920e-be33e72e3fdc}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>

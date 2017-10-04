@@ -2,6 +2,7 @@
 #include "Core.h"
 #include "Client.h"
 #include "RendererGL.h"
+#include "InputManager.h"
 
 // External Dependencies
 #include "SDL/SDL.h"
@@ -18,6 +19,7 @@ private:
 	GameMap* CurrentMap;
 
 public:
+	InputManager Input;
 
 	void ChangeLevel(GameMap* map);
 

@@ -20,6 +20,8 @@ public:
 
 	virtual void Update() {}
 	virtual void Render() {}
+
+	virtual void Serialize() {}
 };
 
 class Entity

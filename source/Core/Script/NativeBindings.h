@@ -30,9 +30,6 @@ JsValueRef CALLBACK LogBinding(JsValueRef callee, bool isConstructCall, JsValueR
 class ScriptNativeEngineInterface // this is just a meme name dont worry
 {
 public:
-
-
-
 	JsValueRef CALLBACK KeyPressed(JsValueRef callee, bool isConstructCall, JsValueRef* arguments,
 		unsigned short argumentCount, void* callbackState)
 	{

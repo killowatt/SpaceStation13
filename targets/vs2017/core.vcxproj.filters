@@ -7,6 +7,9 @@
     <Filter Include="Network">
       <UniqueIdentifier>{db95b969-fdd8-4506-a5b3-e40393933a1a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{c60dc525-d6b0-445b-bc19-7dcc70fb9739}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Core\ByteStream.h" />
@@ -47,9 +50,14 @@
     <ClInclude Include="..\..\source\Core\Network\Replication.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Core\Components\InputComponent.h" />
     <ClInclude Include="..\..\source\Core\Script\NativeBindings.h">
       <Filter>Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Core\Components\SpriteComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Core\Components\InputComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -28,6 +28,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\source\Core\ByteStream.h" />
     <ClInclude Include="..\..\source\Core\Components\InputComponent.h" />
+    <ClInclude Include="..\..\source\Core\Components\SpriteComponent.h" />
     <ClInclude Include="..\..\source\Core\ContentArchive.h" />
     <ClInclude Include="..\..\source\Core\Core.h" />
     <ClInclude Include="..\..\source\Core\Debug.h" />

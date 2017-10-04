@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Renderer\Camera.h" />
-    <ClInclude Include="..\..\source\Renderer\Components\SpriteComponent.h" />
     <ClInclude Include="..\..\source\Renderer\lodepng.h" />
     <ClInclude Include="..\..\source\Renderer\Renderable.h" />
     <ClInclude Include="..\..\source\Renderer\RendererGL.h" />
