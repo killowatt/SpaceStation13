@@ -13,5 +13,7 @@ enum PacketType : PACKET_DT
 	PacketTypePlayerData = 3, // C2S
 	PacketTypeMapData = 4, // S2C
 
+	PacketTypeChunkUpdate = 64,
+
 	PacketTypeTileChange = 100, // example
 };

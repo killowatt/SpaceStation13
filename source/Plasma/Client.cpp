@@ -2,6 +2,9 @@
 #include "Engine.h"
 #include "GameMap.h"
 #include "Network/Network.h"
+
+
+#include "Network/ChunkPacket.h"
 #include "Network/MapDataPacket.h"
 
 bool Client::Connect(const char* address, uint16 port)
@@ -70,6 +73,12 @@ void Client::Update()
 				GameMap* map = new GameMap(data.Width, data.Height); // TODO:
 				map->Name = data.Name;				// MapData/GameMap should do this,
 				EngineRef->ChangeLevel(map);		// We just do this for work checking sake
+				break;
+			}
+			case PacketTypeChunkUpdate:
+			{
+				ChunkPacket x = ChunkPacket::FromStream(reader);
+				printf("Got Chunk Packet data %d", x.simpleData);
 				break;
 			}
 			default:

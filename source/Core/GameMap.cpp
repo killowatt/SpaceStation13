@@ -1,6 +1,9 @@
 #include "GameMap.h"
 #include <cmath>
 
+#include "SDL/SDL_rwops.h"
+#include "zlib.h"
+
 MapSection::MapSection()
 {
 	Width = 0;
@@ -93,5 +96,13 @@ MapSection* GameMap::GetSection(uint32 x, uint32 y)
 
 void GameMap::Serialize()
 {
+	SDL_RWops* file = SDL_RWFromFile("goonStation.pm", "w");
 
+	SDL_RWwrite(file, "PlasmaMapFormat", strlen("PlasmaMapFormat"), 1);
+
+	SDL_RWclose(file);
+
+
+
+	printf("");
 }

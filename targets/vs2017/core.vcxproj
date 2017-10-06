@@ -35,6 +35,7 @@
     <ClInclude Include="..\..\source\Core\Entity.h" />
     <ClInclude Include="..\..\source\Core\Log.h" />
     <ClInclude Include="..\..\source\Core\GameMap.h" />
+    <ClInclude Include="..\..\source\Core\Network\ChunkPacket.h" />
     <ClInclude Include="..\..\source\Core\Network\MapDataPacket.h" />
     <ClInclude Include="..\..\source\Core\Network\NetPlayer.h" />
     <ClInclude Include="..\..\source\Core\Network\Network.h" />
@@ -106,7 +107,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(Configuration)\ChakraCore.lib;$(Configuration)\zlibstaticd.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(Configuration)\ChakraCore.lib;$(Configuration)\SDL2.lib;$(Configuration)\zlibstaticd.lib</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\</AdditionalLibraryDirectories>

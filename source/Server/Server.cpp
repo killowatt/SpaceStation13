@@ -3,6 +3,7 @@
 
 // TODO: factor out these so we dont have such a f'd up header dependency tree
 #include "Network/MapDataPacket.h"
+#include "Network/ChunkPacket.h"
 
 int main()
 {
@@ -24,6 +25,27 @@ void Server::ChangeMap()
 
 void Server::Update()
 {
+	if (Players.size() > 0)
+	{
+		printf("Sending test update");
+
+		ChunkPacket x, y, z, a;
+		x.simpleData = 5;
+		y.simpleData = 15;
+		z.simpleData = 9;
+		a.simpleData = 994;
+
+		ByteStream xx = x.ToStream();
+		ByteStream yy = y.ToStream();
+		ByteStream zz = z.ToStream();
+		ByteStream aa = a.ToStream();
+
+		SendPacket(Players[0], xx);
+		SendPacket(Players[0], yy);
+		SendPacket(Players[0], zz);
+		SendPacket(Players[0], aa);
+	}
+
 	ENetEvent event;
 	while (enet_host_service(ServerHost, &event, 0) > 0)
 	{
@@ -49,11 +71,12 @@ void Server::Update()
 				PlayerData data = PlayerData::FromStream(reader);
 				Log::Print(LogCategory::Info, "Player Data received, name %s",
 					data.Name.c_str());
+
 				NetPlayer player;
 				player.Peer = event.peer;
 				player.Name = data.Name;
 
-				//Players.push_back(
+				Players.push_back(player);
 
 				MapData mapData;
 				mapData.Name = "Goonstation";

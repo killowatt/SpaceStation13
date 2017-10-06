@@ -138,6 +138,10 @@ std::string xLoadFile(const char* fileName) // TODO:  redo this garbage
 
 int main()
 {
+	//Engine zma;
+	//zma.Initialize();
+
+
 
 	GameMap testMap(16 * 4 + 3, 16 * 3 + 2);
 
@@ -159,8 +163,9 @@ int main()
 			}
 		}
 	}
-//
-//
+
+	testMap.Serialize();
+	printf("");
 //
 //	JsRuntimeHandle Runtime;
 //	JsErrorCode error = JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &Runtime);
